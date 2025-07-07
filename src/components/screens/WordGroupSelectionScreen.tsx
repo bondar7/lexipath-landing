@@ -1,0 +1,83 @@
+import React from 'react';
+import { ArrowLeft, RotateCcw } from 'lucide-react';
+
+const WordGroupSelectionScreen: React.FC = () => {
+  const words = ['Meeting', 'Proposal', 'Budget', 'Contract', 'Revenue', 'Strategy', 'Deadline', 'Profit'];
+  const groupSizes = ['5', '8', '10', '12'];
+  const selectedSize = '8';
+
+  return (
+    <div className="h-full bg-gray-50">
+      {/* Header */}
+      <div className="bg-white px-3 md:px-4 py-3 md:py-4 shadow-sm">
+        <div className="flex items-center justify-between">
+          <button className="p-1.5 md:p-2 rounded-full bg-gray-100">
+            <ArrowLeft className="w-4 md:w-5 h-4 md:h-5" />
+          </button>
+          <h2 className="text-base md:text-lg font-bold text-gray-900">💼 Business English</h2>
+          <div className="w-7 md:w-9"></div>
+        </div>
+      </div>
+      
+      <div className="p-3 md:p-4">
+        {/* Group Selection - MAIN CONCEPT */}
+        <div className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 p-4 md:p-6 rounded-xl md:rounded-2xl mb-4 md:mb-6 border border-blue-200">
+          <div className="flex items-center justify-between mb-3 md:mb-4">
+            <h3 className="text-lg md:text-xl font-bold text-gray-900">Pick Word Group</h3>
+            <div className="bg-blue-100 px-2 md:px-3 py-1 rounded-full">
+              <span className="text-xs md:text-sm font-medium text-blue-700">Group Size: {selectedSize}</span>
+            </div>
+          </div>
+          
+          {/* Selected Words Display */}
+          <div className="bg-white p-3 md:p-4 rounded-lg md:rounded-xl mb-3 md:mb-4 shadow-sm">
+            <div className="grid grid-cols-2 gap-2 md:gap-3">
+              {words.map((word, index) => (
+                <div key={index} className="bg-blue-50 text-blue-800 px-2 md:px-3 py-1.5 md:py-2 rounded-lg text-center text-sm md:text-base font-medium">
+                  {word}
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Regenerate Button - KEY FEATURE */}
+          <button className="w-full bg-gradient-to-r from-blue-500 to-green-500 text-white py-2.5 md:py-3 rounded-lg md:rounded-xl font-bold flex items-center justify-center space-x-2 shadow-lg text-sm md:text-base hover:shadow-xl transition-shadow">
+            <RotateCcw className="w-4 md:w-5 h-4 md:h-5" />
+            <span>Regenerate Group</span>
+          </button>
+        </div>
+        
+        {/* Group Size Selector */}
+        <div className="bg-white p-3 md:p-4 rounded-xl shadow-sm mb-4 md:mb-6">
+          <h4 className="font-semibold text-gray-900 mb-2 md:mb-3 text-sm md:text-base">Group Size</h4>
+          <div className="flex space-x-2">
+            {groupSizes.map((size) => (
+              <button 
+                key={size} 
+                className={`px-3 md:px-4 py-1.5 md:py-2 rounded-lg font-medium text-xs md:text-sm transition-colors ${
+                  size === selectedSize 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {size}
+              </button>
+            ))}
+          </div>
+        </div>
+        
+        {/* Action Buttons */}
+        <div className="space-y-2 md:space-y-3">
+          <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 md:py-4 rounded-xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transition-shadow">
+            🚀 Start Learning Process
+          </button>
+          <button className="w-full bg-gray-100 text-gray-700 py-2.5 md:py-3 rounded-xl font-medium text-sm md:text-base hover:bg-gray-200 transition-colors">
+            📚 Browse All Words
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default WordGroupSelectionScreen;
