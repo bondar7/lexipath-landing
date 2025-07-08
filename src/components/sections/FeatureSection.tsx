@@ -10,9 +10,9 @@ const FeatureSection: React.FC = () => {
   const t = i18n.en.features;
 
   return (
-    <div className="py-16 md:py-24 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 md:mb-16">
+    <div className="py-12 md:py-18 bg-gray-50">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {t.title}
           </h2>
@@ -21,7 +21,7 @@ const FeatureSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="space-y-12 md:space-y-16">
+        <div className="space-y-10 md:space-y-12">
           <FeatureCard
             icon={BookOpen}
             iconColor="blue"

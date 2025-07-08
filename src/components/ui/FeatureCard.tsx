@@ -28,9 +28,9 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   highlight
 }) => {
   return (
-    <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl p-6 md:p-8 border">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-        <div className="order-2 lg:order-1 space-y-6">
+    <div className="bg-white rounded-2xl md:rounded-3xl shadow-xl p-5 md:p-7 border">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+        <div className="order-2 lg:order-1 space-y-5">
           <div className="flex items-center space-x-3">
             <div className={`bg-${iconColor}-100 p-3 rounded-xl`}>
               <Icon className={`w-6 md:w-8 h-6 md:h-8 text-${iconColor}-600`} />

@@ -5,7 +5,7 @@ export const i18n = {
       title: "Master Any Language",
       subtitle: "10x Faster",
       description: "Revolutionary AI-powered vocabulary learning that adapts to your brain.",
-      exercises: "8 scientifically-proven exercises",
+      exercises: "7 scientifically-proven exercises",
       exercisesSuffix: "in one seamless experience.",
       stats: {
         retention: "3x Retention Rate",
@@ -61,7 +61,7 @@ export const i18n = {
     },
     
     learningSteps: {
-      title: "8-Step Learning Process",
+      title: "7-Step Learning Process",
       subtitle: "Our scientifically-proven method ensures deep understanding and long-term retention.",
       steps: [
         {
@@ -91,10 +91,6 @@ export const i18n = {
         {
           title: "Error Correction",
           description: "Review and fix mistakes for targeted improvement"
-        },
-        {
-          title: "Smart Review System",
-          description: "Spaced repetition for long-term retention of mastered words"
         }
       ]
     },
@@ -115,7 +111,7 @@ export const i18n = {
       wordmaster: {
         title: "WordMaster",
         features: [
-          "8 different exercise types",
+          "7 different exercise types",
           "AI-generated examples",
           "Scientific spaced repetition",
           "Unlimited AI topics",
