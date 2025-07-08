@@ -70,10 +70,16 @@ const WordsMainScreen: React.FC = () => {
                 />
               </div>
               <div className="flex space-x-2">
-                <button className="flex-1 bg-blue-500 text-white py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium hover:bg-blue-600 transition-colors">
+                <button 
+                  className="flex-1 bg-blue-500 text-white py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium hover:bg-blue-600 active:bg-blue-700 transform hover:scale-105 active:scale-95 transition-all duration-200 shadow-sm hover:shadow-md"
+                  onClick={() => console.log('Learn clicked for', list.name)}
+                >
                   Learn
                 </button>
-                <button className="flex-1 bg-gray-100 text-gray-700 py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium hover:bg-gray-200 transition-colors">
+                <button 
+                  className="flex-1 bg-gray-100 text-gray-700 py-1.5 md:py-2 rounded-lg text-xs md:text-sm font-medium hover:bg-gray-200 active:bg-gray-300 transform hover:scale-105 active:scale-95 transition-all duration-200 shadow-sm hover:shadow-md"
+                  onClick={() => console.log('Flashcards clicked for', list.name)}
+                >
                   Flashcards
                 </button>
               </div>

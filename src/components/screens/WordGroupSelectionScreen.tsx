@@ -11,7 +11,7 @@ const WordGroupSelectionScreen: React.FC = () => {
       {/* Header */}
       <div className="bg-white px-3 md:px-4 py-3 md:py-4 shadow-sm">
         <div className="flex items-center justify-between">
-          <button className="p-1.5 md:p-2 rounded-full bg-gray-100">
+          <button className="p-1.5 md:p-2 rounded-full bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transform hover:scale-105 active:scale-95 transition-all duration-200">
             <ArrowLeft className="w-4 md:w-5 h-4 md:h-5" />
           </button>
           <h2 className="text-base md:text-lg font-bold text-gray-900">💼 Business English</h2>
@@ -41,7 +41,7 @@ const WordGroupSelectionScreen: React.FC = () => {
           </div>
           
           {/* Regenerate Button - KEY FEATURE */}
-          <button className="w-full bg-gradient-to-r from-blue-500 to-green-500 text-white py-2.5 md:py-3 rounded-lg md:rounded-xl font-bold flex items-center justify-center space-x-2 shadow-lg text-sm md:text-base hover:shadow-xl transition-shadow">
+          <button className="w-full bg-gradient-to-r from-blue-500 to-green-500 text-white py-2.5 md:py-3 rounded-lg md:rounded-xl font-bold flex items-center justify-center space-x-2 shadow-lg text-sm md:text-base hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200">
             <RotateCcw className="w-4 md:w-5 h-4 md:h-5" />
             <span>Regenerate Group</span>
           </button>
@@ -54,10 +54,10 @@ const WordGroupSelectionScreen: React.FC = () => {
             {groupSizes.map((size) => (
               <button 
                 key={size} 
-                className={`px-3 md:px-4 py-1.5 md:py-2 rounded-lg font-medium text-xs md:text-sm transition-colors ${
+                className={`px-3 md:px-4 py-1.5 md:py-2 rounded-lg font-medium text-xs md:text-sm transform hover:scale-105 active:scale-95 transition-all duration-200 ${
                   size === selectedSize 
                     ? 'bg-blue-500 text-white' 
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 active:bg-gray-300'
                 }`}
               >
                 {size}
@@ -68,10 +68,10 @@ const WordGroupSelectionScreen: React.FC = () => {
         
         {/* Action Buttons */}
         <div className="space-y-2 md:space-y-3">
-          <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 md:py-4 rounded-xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transition-shadow">
+          <button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 md:py-4 rounded-xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl transform hover:scale-105 active:scale-95 transition-all duration-200">
             🚀 Start Learning Process
           </button>
-          <button className="w-full bg-gray-100 text-gray-700 py-2.5 md:py-3 rounded-xl font-medium text-sm md:text-base hover:bg-gray-200 transition-colors">
+          <button className="w-full bg-gray-100 text-gray-700 py-2.5 md:py-3 rounded-xl font-medium text-sm md:text-base hover:bg-gray-200 active:bg-gray-300 transform hover:scale-105 active:scale-95 transition-all duration-200">
             📚 Browse All Words
           </button>
         </div>

@@ -8,7 +8,7 @@ interface PhoneFrameProps {
 const PhoneFrame: React.FC<PhoneFrameProps> = ({ children, className = "" }) => {
   return (
     <div className={`relative mx-auto ${className}`}>
-      <div className="relative bg-black rounded-[1.5rem] md:rounded-[2.5rem] p-1.5 md:p-3 shadow-2xl transform hover:scale-105 transition-transform duration-300 w-72 md:w-96 lg:w-[26rem]">
+      <div className="relative bg-black rounded-[1.5rem] md:rounded-[2.5rem] p-1.5 md:p-3 shadow-2xl transform hover:scale-102 transition-transform duration-300 w-72 md:w-96 lg:w-[26rem]">
         {/* Dynamic Island (iPhone 16 style) */}
         <div className="absolute top-3 md:top-5 left-1/2 transform -translate-x-1/2 z-10">
           <div className="bg-gray-900 rounded-full px-4 md:px-6 py-1.5 md:py-2 flex items-center justify-center">

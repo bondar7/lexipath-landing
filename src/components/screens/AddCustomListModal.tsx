@@ -14,7 +14,7 @@ const AddCustomListModal: React.FC = () => {
       {/* Header */}
       <div className="bg-white px-3 md:px-4 py-3 md:py-4 shadow-sm">
         <div className="flex items-center justify-between">
-          <button className="p-1.5 md:p-2 rounded-full bg-gray-100">
+          <button className="p-1.5 md:p-2 rounded-full bg-gray-100 hover:bg-gray-200 active:bg-gray-300 transform hover:scale-105 active:scale-95 transition-all duration-200">
             <ArrowLeft className="w-4 md:w-5 h-4 md:h-5" />
           </button>
           <h2 className="text-base md:text-lg font-bold text-gray-900">Add Custom List</h2>
@@ -51,7 +51,7 @@ const AddCustomListModal: React.FC = () => {
                 className="w-full p-2.5 md:p-3 border border-gray-300 rounded-lg text-sm md:text-base focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
-            <button className="w-full bg-blue-500 text-white py-2.5 md:py-3 rounded-xl font-medium text-sm md:text-base hover:bg-blue-600 transition-colors">
+            <button className="w-full bg-blue-500 text-white py-2.5 md:py-3 rounded-xl font-medium text-sm md:text-base hover:bg-blue-600 active:bg-blue-700 transform hover:scale-105 active:scale-95 transition-all duration-200 shadow-sm hover:shadow-md">
               Create List
             </button>
           </div>
@@ -90,10 +90,10 @@ const AddCustomListModal: React.FC = () => {
                   <button 
                     key={level} 
                     onClick={() => setSelectedLevel(level)}
-                    className={`px-2 md:px-3 py-1 rounded text-xs md:text-sm font-medium transition-colors ${
+                    className={`px-2 md:px-3 py-1 rounded text-xs md:text-sm font-medium transform hover:scale-105 active:scale-95 transition-all duration-200 ${
                       level === selectedLevel 
                         ? 'bg-purple-500 text-white' 
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300 active:bg-gray-400'
                     }`}
                   >
                     {level}
@@ -102,14 +102,14 @@ const AddCustomListModal: React.FC = () => {
               </div>
             </div>
             
-            <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 md:py-2.5 rounded-lg font-medium text-xs md:text-sm hover:from-purple-600 hover:to-pink-600 transition-colors">
+            <button className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 md:py-2.5 rounded-lg font-medium text-xs md:text-sm hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 active:scale-95 transition-all duration-200 shadow-sm hover:shadow-md">
               ✨ Generate AI Words
             </button>
           </div>
         </div>
         
         {/* Import from File Button */}
-        <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-2.5 md:py-3 rounded-xl font-medium flex items-center justify-center space-x-2 shadow-sm text-sm md:text-base hover:from-green-600 hover:to-emerald-600 transition-colors">
+        <button className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white py-2.5 md:py-3 rounded-xl font-medium flex items-center justify-center space-x-2 shadow-sm text-sm md:text-base hover:from-green-600 hover:to-emerald-600 transform hover:scale-105 active:scale-95 transition-all duration-200 hover:shadow-md">
           <Globe className="w-4 md:w-5 h-4 md:h-5" />
           <span>Import from file</span>
         </button>
