@@ -77,7 +77,7 @@ const AddCustomListModal: React.FC = () => {
                 value={topic}
                 onChange={(e) => setTopic(e.target.value)}
                 placeholder="e.g., Space exploration, Cooking..."
-                className="w-full p-1.5 border border-gray-300  text-xs md:text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                className="w-full p-1.5 border border-gray-300 rounded-lg text-xs md:text-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
               />
             </div>
             

@@ -105,7 +105,7 @@ export const i18n = {
           "No context or examples",
           "Random review timing",
           "Limited topic coverage",
-          "No pronunciation help"
+          "Mostly only English"
         ]
       },
       wordmaster: {
@@ -115,7 +115,7 @@ export const i18n = {
           "AI-generated examples",
           "Scientific spaced repetition",
           "Unlimited AI topics",
-          "Native pronunciation"
+          "Multi-language support"
         ]
       }
     }
