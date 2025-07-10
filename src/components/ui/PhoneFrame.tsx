@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface PhoneFrameProps {
   children: React.ReactNode;
@@ -6,9 +6,108 @@ interface PhoneFrameProps {
 }
 
 const PhoneFrame: React.FC<PhoneFrameProps> = ({ children, className = "" }) => {
+  const [showScrollHint, setShowScrollHint] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const frameRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            // Start the hint animation immediately
+            setShowScrollHint(true);
+            setHasAnimated(true);
+            
+            // Auto-scroll demo on desktop
+            if (window.innerWidth >= 1024 && contentRef.current) {
+              const content = contentRef.current;
+              const maxScroll = content.scrollHeight - content.clientHeight;
+              
+              if (maxScroll > 0) {
+                // Smooth scroll down after showing the hint
+                setTimeout(() => {
+                  content.scrollTo({ top: maxScroll * 0.3, behavior: 'smooth' });
+                }, 800);
+                
+                // Scroll back up after 2 seconds
+                setTimeout(() => {
+                  content.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 2800);
+              }
+            }
+            
+            // No timer - hint stays until user interaction
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (frameRef.current) {
+      observer.observe(frameRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasAnimated]);
+
+  // Listen for ANY scroll events within the phone frame (including from child components)
+  useEffect(() => {
+    if (!showScrollHint) return;
+
+    const hideHint = (e: Event) => {
+      console.log('User interaction detected, hiding hint');
+      setShowScrollHint(false);
+    };
+
+    const contentElement = contentRef.current;
+    if (contentElement) {
+      console.log('Adding scroll listener to capture all scroll events');
+      
+      // Listen for scroll events that bubble up from any child element
+      contentElement.addEventListener('scroll', hideHint, { passive: true, capture: true });
+      
+      // Also listen for wheel events anywhere in the phone frame
+      contentElement.addEventListener('wheel', hideHint, { passive: true });
+      
+      // Listen for touch events (mobile scrolling)
+      contentElement.addEventListener('touchstart', hideHint, { passive: true });
+      contentElement.addEventListener('touchmove', hideHint, { passive: true });
+      
+      return () => {
+        console.log('Removing all interaction listeners');
+        contentElement.removeEventListener('scroll', hideHint, true);
+        contentElement.removeEventListener('wheel', hideHint);
+        contentElement.removeEventListener('touchstart', hideHint);
+        contentElement.removeEventListener('touchmove', hideHint);
+      };
+    }
+  }, [showScrollHint]);
+
   return (
-    <div className={`relative mx-auto ${className}`}>
+    <div ref={frameRef} className={`relative mx-auto ${className}`}>
       <div className="relative bg-black rounded-[2.5rem] md:rounded-[3rem] p-2 shadow-2xl transform hover:scale-102 transition-transform duration-300 w-60 md:w-80 lg:w-88">
+        
+        {/* Scroll hint overlay with fade in animation */}
+        {showScrollHint && (
+          <div className="absolute inset-0 z-10 pointer-events-none animate-fade-in">
+            {/* Pulsing glow effect */}
+            <div className="absolute inset-0 bg-blue-400/20 rounded-[2.5rem] md:rounded-[3rem] animate-pulse"></div>
+            
+            {/* Scroll indicator - now shown on all devices */}
+            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+              <div className="bg-white/90 backdrop-blur-sm px-3 py-2 rounded-full shadow-lg flex items-center space-x-2 animate-bounce">
+                <div className="w-1 h-4 bg-gray-600 rounded-full"></div>
+                <span className="text-xs text-gray-700 font-medium">Scroll to explore</span>
+                <div className="flex flex-col space-y-1">
+                  <div className="w-0 h-0 border-l-2 border-r-2 border-b-3 border-transparent border-b-gray-600"></div>
+                  <div className="w-0 h-0 border-l-2 border-r-2 border-b-3 border-transparent border-b-gray-600"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
         
         <div className="bg-white rounded-[2rem] md:rounded-[2.5rem] overflow-hidden relative">
           {/* Status bar with Dynamic Island */}
@@ -22,7 +121,14 @@ const PhoneFrame: React.FC<PhoneFrameProps> = ({ children, className = "" }) => 
             </div>
           </div>
           
-          <div className="h-[420px] md:h-[560px] lg:h-[620px] bg-gray-50 overflow-hidden">
+          <div 
+            ref={contentRef}
+            className="h-[420px] md:h-[560px] lg:h-[620px] bg-gray-50 overflow-hidden hover:overflow-y-auto transition-all duration-300 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent"
+            style={{
+              scrollbarWidth: 'thin',
+              scrollbarColor: '#D1D5DB transparent'
+            }}
+          >
             {children}
           </div>
           
