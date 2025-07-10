@@ -23,15 +23,6 @@ const FeatureSection: React.FC = () => {
 
         <div className="space-y-10 md:space-y-12">
           <FeatureCard
-            icon={BookOpen}
-            iconColor="blue"
-            title={t.smartLists.title}
-            description={t.smartLists.description}
-            features={t.smartLists.features}
-            phoneScreen={<WordsMainScreen />}
-          />
-
-          <FeatureCard
             icon={Target}
             iconColor="purple"
             title={t.smartGroups.title}
@@ -43,6 +34,16 @@ const FeatureSection: React.FC = () => {
             }}
             phoneScreen={<WordGroupSelectionScreen />}
           />
+          
+          <FeatureCard
+            icon={BookOpen}
+            iconColor="blue"
+            title={t.smartLists.title}
+            description={t.smartLists.description}
+            features={t.smartLists.features}
+            phoneScreen={<WordsMainScreen />}
+          />
+
 
           <FeatureCard
             icon={Sparkles}

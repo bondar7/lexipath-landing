@@ -13,7 +13,7 @@ export const i18n = {
         languages: "15+ Languages"
       },
       cta: {
-        placeholder: "Enter your email for early access",
+        placeholder: "Enter your email",
         button: "Get Early Access",
         success: "You're on the waitlist! Check your email.",
         trust: {
@@ -30,32 +30,35 @@ export const i18n = {
       
       smartLists: {
         title: "Smart Word Lists",
-        description: "Organize vocabulary with pre-generated topic lists (A2, B1, C2), verbs, nouns, and custom collections.",
+        description: "Master vocabulary with curated lists for every level and goal.",
         features: [
-          "Pre-generated lists: Travel, Business, Family",
-          "Custom lists with AI generation",
-          "Progress tracking per list"
+          "Ready-made lists: IELTS, TOEFL, Business, Academic, A1, C2 and more",
+          "Create custom lists with AI or import files", 
+          "Track progress across all lists",
+          "Smart reviews adapt to your pace"
         ]
       },
       
       smartGroups: {
         title: "Smart Word Groups",
         mainIdea: "🚀 THE MAIN IDEA!",
-        description: "Pick customizable groups of words (5-12) to learn together. Regenerate anytime!",
+        description: "The proven way to learn vocabulary faster. Pick groups of 5-12 words and master them with 7 exercises!",
         features: [
-          "Customizable group sizes (5-12 words)",
+          "Optimal group sizes (5-12 words)",
+          "Practice with 7 different exercises",
           "One-click regeneration",
-          "Optimized learning batches"
+          "Research-backed learning method"
         ]
       },
       
       aiLists: {
-        title: "AI-Powered Custom Lists",
-        description: "Create custom word lists manually or let AI generate them based on any topic you choose.",
+        title: "AI-Powered Custom Lists", 
+        description: "Build perfect word lists instantly. Manual creation or AI generation from any topic.",
         features: [
-          "Manual list creation with custom words",
-          "AI generation by any topic",
-          "Difficulty level selection (A1-C2)"
+          "Manual word list creation",
+          "AI generation from any topic",
+          "Difficulty levels A1-C2",
+          "Import from files"
         ]
       }
     },
@@ -108,8 +111,8 @@ export const i18n = {
           "Mostly only English"
         ]
       },
-      wordmaster: {
-        title: "WordMaster",
+      lexipath: {
+        title: "Lexipath",
         features: [
           "7 different exercise types",
           "AI-generated examples",

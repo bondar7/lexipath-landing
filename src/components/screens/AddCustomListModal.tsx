@@ -7,7 +7,7 @@ const AddCustomListModal: React.FC = () => {
   const [topic, setTopic] = useState('Harry Potter');
   const [selectedLevel, setSelectedLevel] = useState('B1');
 
-  const difficultyLevels = ['A2', 'B1', 'B2', 'C1'];
+  const difficultyLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
   return (
     <div className="flex flex-col h-full bg-gray-50">
@@ -85,7 +85,7 @@ const AddCustomListModal: React.FC = () => {
               <label className="block text-xs font-medium text-gray-700 mb-1">
                 Difficulty Level
               </label>
-              <div className="flex space-x-2">
+              <div className="flex flex-wrap gap-2">
                 {difficultyLevels.map((level) => (
                   <button 
                     key={level} 

@@ -17,7 +17,7 @@ const CTASection: React.FC = () => {
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           Ready to Transform Your Vocabulary Learning?
         </h2>
-        <p className="text-lg md:text-xl text-gray-600 mb-8">
+        <p className="text-lg md:text-xl text-gray-600 mb-8 hidden lg:block">
           Join thousands of language learners who are already experiencing the future of vocabulary acquisition.
         </p>
         

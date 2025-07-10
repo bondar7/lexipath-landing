@@ -11,15 +11,15 @@ interface WordList {
 
 const WordsMainScreen: React.FC = () => {
   const wordLists: WordList[] = [
-    { name: 'My Custom List', level: 'Custom', words: 77, progress: 89, color: 'purple' },
-    { name: 'A2 Words', level: 'A2', words: 324, progress: 78, color: 'green' },
-    { name: 'B1 Words', level: 'B1', words: 523, progress: 65, color: 'blue' },
-    { name: 'B2 Words', level: 'B2', words: 345, progress: 45, color: 'pink' },
-    { name: 'C1 Words', level: 'C1', words: 256, progress: 23, color: 'red' },
-    { name: 'C2 Words', level: 'C2', words: 128, progress: 12, color: 'purple' },
+    { name: 'My Custom List', level: 'Custom', words: 187, progress: 89, color: 'purple' },
+    { name: 'A2 Words', level: 'A2', words: 900, progress: 88, color: 'green' },
+    { name: 'B1 Words', level: 'B1', words: 700, progress: 65, color: 'blue' },
+    { name: 'B2 Words', level: 'B2', words: 550, progress: 45, color: 'pink' },
+    { name: 'C1 Words', level: 'C1', words: 440, progress: 23, color: 'red' },
+    { name: 'C2 Words', level: 'C2', words: 500, progress: 12, color: 'purple' },
     { name: 'Business English', level: 'Custom', words: 143, progress: 56, color: 'teal' },
-    { name: 'IELTS Vocabulary', level: 'Custom', words: 234, progress: 34, color: 'orange' },
-    { name: 'Academic Words', level: 'Custom', words: 176, progress: 72, color: 'pink' }
+    { name: 'IELTS Vocabulary', level: 'B1', words: 1100, progress: 34, color: 'orange' },
+    { name: 'Academic Words', level: 'Custom', words: 967, progress: 72, color: 'pink' }
   ];
 
   return (
@@ -43,7 +43,7 @@ const WordsMainScreen: React.FC = () => {
         {/* Stats */}
         <div className="grid grid-cols-2 gap-3 mb-6">
           <div className="bg-white p-4 rounded-xl shadow-sm">
-            <div className="text-base md:text-lg font-bold text-blue-600">1,247</div>
+            <div className="text-base md:text-lg font-bold text-blue-600">2972</div>
             <div className="text-xs text-gray-600">Words Learned</div>
           </div>
           <div className="bg-white p-4 rounded-xl shadow-sm">

@@ -43,7 +43,7 @@ const ComparisonSection: React.FC = () => {
             </ul>
           </div>
 
-          {/* WordMaster */}
+          {/* Lexipath */}
           <div className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-green-400 to-emerald-600"></div>
             <div className="flex items-center mb-6">
@@ -52,7 +52,7 @@ const ComparisonSection: React.FC = () => {
               </div>
               <div>
                 <h3 className="text-xl font-bold text-gray-900">
-                  {t.wordmaster.title}
+                  {t.lexipath.title}
                 </h3>
                 <div className="inline-flex items-center bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full text-xs font-medium mt-2">
                   <Zap className="w-3 h-3 mr-1" />
@@ -61,7 +61,7 @@ const ComparisonSection: React.FC = () => {
               </div>
             </div>
             <ul className="space-y-3">
-              {t.wordmaster.features.map((feature, index) => (
+              {t.lexipath.features.map((feature, index) => (
                 <li key={index} className="flex items-start">
                   <CheckCircle className="w-4 h-4 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
                   <span className="text-gray-700">{feature}</span>

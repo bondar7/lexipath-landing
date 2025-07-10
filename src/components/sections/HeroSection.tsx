@@ -28,7 +28,7 @@ const HeroSection: React.FC = () => {
         <div className="absolute bottom-20 left-20 w-24 h-24 bg-indigo-500/10 rounded-full blur-xl animate-pulse delay-500"></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 md:pt-26 lg:pb-48">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 md:pt-20 xl:pb-44">
         <div className="text-center">
           {/* Badge */}
           <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
@@ -103,15 +103,15 @@ const HeroSection: React.FC = () => {
             <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:gap-6">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
-                <span className="text-white/90 font-medium text-sm">{t.cta.trust.free}</span>
+                <span className="text-white/90 font-medium text-md">{t.cta.trust.free}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
-                <span className="text-white/90 font-medium text-sm">{t.cta.trust.noCard}</span>
+                <span className="text-white/90 font-medium text-md">{t.cta.trust.noCard}</span>
               </div>
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
-                <span className="text-white/90 font-medium text-sm">{t.cta.trust.cancel}</span>
+                <span className="text-white/90 font-medium text-md">{t.cta.trust.cancel}</span>
               </div>
             </div>
           </div>

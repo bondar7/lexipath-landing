@@ -10,13 +10,13 @@ const Footer: React.FC = () => {
             <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-xl">
               <Brain className="w-5 md:w-6 h-5 md:h-6 text-white" />
             </div>
-            <span className="ml-3 text-lg md:text-xl font-bold">WordMaster</span>
+            <span className="ml-3 text-lg md:text-xl font-bold">Lexipath</span>
           </div>
           <p className="text-gray-400 mb-4 text-sm md:text-base">
-            The next generation vocabulary learning app
+            The next generation vocabulary app
           </p>
           <p className="text-gray-500 text-xs md:text-sm">
-            © 2024 WordMaster. All rights reserved.
+            © 2025 Lexipath. All rights reserved.
           </p>
         </div>
       </div>
