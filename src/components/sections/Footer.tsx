@@ -13,10 +13,10 @@ const Footer: React.FC = () => {
             <span className="ml-3 text-lg md:text-xl font-bold">Lexipath</span>
           </div>
           <p className="text-gray-400 mb-4 text-sm md:text-base">
-            The next generation vocabulary app
+              Your path to better vocabulary 
           </p>
           <p className="text-gray-500 text-xs md:text-sm">
-            © 2025 Lexipath. All rights reserved.
+            © 2025 Lexipath. Made with ❤️ for language learners.
           </p>
         </div>
       </div>

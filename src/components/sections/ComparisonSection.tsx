@@ -71,13 +71,6 @@ const ComparisonSection: React.FC = () => {
           </div>
         </div>
         
-        {/* Bottom CTA */}
-        <div className="text-center mt-12">
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full inline-flex items-center font-medium shadow-lg">
-            <span className="mr-2">🚀</span>
-            Experience the difference yourself
-          </div>
-        </div>
       </div>
     </div>
   );

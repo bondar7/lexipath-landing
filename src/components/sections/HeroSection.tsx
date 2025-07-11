@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Sparkles, Zap, CheckCircle, TrendingUp, Clock, Globe } from 'lucide-react';
 import { colors } from '../../config/colors';
 import { i18n } from '../../config/i18n';
+import { useWaitlist } from '../../lib/hooks/useWaitlist';
 
 const HeroSection: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const t = i18n.en.hero;
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-  };
+  const {
+    email,
+    isSubmitted,
+    isLoading,
+    error,
+    handleSubmit,
+    handleEmailChange,
+  } = useWaitlist();
 
   return (
     <div className="relative overflow-hidden">
@@ -71,25 +72,49 @@ const HeroSection: React.FC = () => {
           {/* CTA Section */}
           <div className="max-w-lg mx-auto">
             <form onSubmit={handleSubmit} className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <div className="flex-1">
+              <div className="flex-1 relative">
                 <input
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={handleEmailChange}
                   placeholder={t.cta.placeholder}
-                  className="w-full px-6 py-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl focus:ring-2 focus:ring-blue-400 focus:border-blue-400 text-white placeholder-white/60 text-base"
+                  className={`w-full px-6 py-4 bg-white/10 backdrop-blur-sm border rounded-2xl focus:ring-2 focus:ring-blue-400 focus:border-blue-400 text-white placeholder-white/60 text-base transition-colors ${
+                    error ? 'border-red-400 focus:ring-red-400 focus:border-red-400' : 'border-white/20'
+                  }`}
                   required
+                  disabled={isLoading}
                 />
+                {/* Error message in normal flow for mobile, positioned for desktop */}
+                {error && (
+                  <p className="mt-2 text-red-300 text-sm bg-red-500/20 backdrop-blur-sm px-3 py-2 rounded-lg border border-red-400/30 sm:absolute sm:top-full sm:left-0 sm:right-0 sm:mt-2 sm:z-20">
+                    {error}
+                  </p>
+                )}
               </div>
+              
               <button
                 type="submit"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 text-base shadow-2xl"
+                disabled={isLoading}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 text-base shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none sm:self-start"
               >
-                <Zap className="w-5 h-5" />
-                <span>{t.cta.button}</span>
+                {isLoading ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <span>Joining...</span>
+                  </>
+                ) : (
+                  <>
+                    <Zap className="w-5 h-5" />
+                    <span>{t.cta.button}</span>
+                  </>
+                )}
               </button>
             </form>
-            
+
+            {/* Add spacing to prevent overlap with content below */}
+            <div className={`transition-all duration-300 ${error ? 'h-12 sm:h-8' : 'h-4 sm:h-0'}`}></div>
+
+            {/* Success Message */}
             {isSubmitted && (
               <div className="mt-6 p-4 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-2xl">
                 <div className="flex items-center justify-center space-x-2">
@@ -100,7 +125,7 @@ const HeroSection: React.FC = () => {
             )}
             
             {/* Trust Indicators */}
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:gap-6">
               <div className="flex items-center space-x-2">
                 <CheckCircle className="w-4 h-4 text-green-400" />
                 <span className="text-white/90 font-medium text-md">{t.cta.trust.free}</span>
