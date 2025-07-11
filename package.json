@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://lexipath.xyz",
+  "homepage": "https://bondar7.github.io/lexipath-landing",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
