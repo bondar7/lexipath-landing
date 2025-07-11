@@ -43,7 +43,6 @@ export function useWaitlist(): UseWaitlistReturn {
       if (result.success) {
         setIsSubmitted(true);
         setEmail('');
-        setTimeout(() => setIsSubmitted(false), 5000);
       } else {
         setError(result.error || 'Failed to join waitlist. Please try again.');
       }

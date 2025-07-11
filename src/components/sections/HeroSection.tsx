@@ -42,7 +42,7 @@ const HeroSection: React.FC = () => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
             {t.title}
             <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              {t.subtitle} SUBTITLE
+              {t.subtitle}
             </span>
           </h1>
           
@@ -117,10 +117,13 @@ const HeroSection: React.FC = () => {
             {/* Success Message */}
             {isSubmitted && (
               <div className="mt-6 p-4 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-2xl">
-                <div className="flex items-center justify-center space-x-2">
+                <div className="flex items-center justify-center space-x-2 mb-2">
                   <CheckCircle className="w-5 h-5 text-green-400" />
                   <span className="text-green-300 font-medium">{t.cta.success}</span>
                 </div>
+                <p className="text-green-200 text-sm">
+                  Don't see our email? Check your spam folder.
+                </p>
               </div>
             )}
             
