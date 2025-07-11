@@ -11,12 +11,14 @@ function App() {
   return (
     <div className="min-h-screen bg-white">
       <StructuredData />
-      <HeroSection />
-      <FeatureSection />
-      <LearningStepsSection />
-      <ComparisonSection />
-      <StatsSection />
-      <CTASection />
+      <main>
+        <HeroSection />
+        <FeatureSection />
+        <LearningStepsSection />
+        <ComparisonSection />
+        <StatsSection />
+        <CTASection />
+      </main>
       <Footer />
     </div>
   );

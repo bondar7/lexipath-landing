@@ -8,18 +8,19 @@ const Footer: React.FC = () => {
           <div className="flex items-center justify-center mb-4">
             <img
               src='/logo.webp'
-              alt='Lexipath Logo'
+              alt='Lexipath Logo - AI-Powered Vocabulary Learning App'
               className='size-12 rounded-2xl'
-            >
-            </img>
-            <span className="ml-3 text-lg md:text-xl font-bold">Lexipath</span>
+              width="48"
+              height="48"
+            />
+            <h2 className="ml-3 text-lg md:text-xl font-bold">Lexipath</h2>
           </div>
           <p className="text-gray-400 mb-4 text-sm md:text-base">
             Your path to better vocabulary
           </p>
-          <p className="text-gray-500 text-xs md:text-sm">
+          <address className="text-gray-500 text-xs md:text-sm not-italic">
             © 2025 Lexipath. Made with ❤️ for language learners.
-          </p>
+          </address>
         </div>
       </div>
     </footer>

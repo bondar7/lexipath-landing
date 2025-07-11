@@ -9,18 +9,19 @@ const StatsSection: React.FC = () => {
   ];
 
   return (
-    <div className="py-12 md:py-16 bg-gradient-to-r from-blue-600 to-purple-600">
+    <section className="py-12 md:py-16 bg-gradient-to-r from-blue-600 to-purple-600" aria-labelledby="stats-heading">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+        <h2 id="stats-heading" className="sr-only">Lexipath Statistics</h2>
+        <dl className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
           {stats.map(({ number, label }) => (
             <div key={label} className="text-white">
-              <div className="text-2xl md:text-3xl font-bold mb-2">{number}</div>
-              <div className="text-blue-100 text-sm md:text-base">{label}</div>
+              <dt className="text-2xl md:text-3xl font-bold mb-2">{number}</dt>
+              <dd className="text-blue-100 text-sm md:text-base">{label}</dd>
             </div>
           ))}
-        </div>
+        </dl>
       </div>
-    </div>
+    </section>
   );
 };
 

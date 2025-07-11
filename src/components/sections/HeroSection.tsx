@@ -16,7 +16,7 @@ const HeroSection: React.FC = () => {
   } = useWaitlist();
 
   return (
-    <div className="relative overflow-hidden">
+    <section className="relative overflow-hidden">
       {/* Animated Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
         <div className="absolute inset-0 opacity-20" style={{
@@ -29,7 +29,7 @@ const HeroSection: React.FC = () => {
         <div className="absolute bottom-20 left-20 w-24 h-24 bg-indigo-500/10 rounded-full blur-xl animate-pulse delay-500"></div>
       </div>
       
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 md:pt-20 xl:pb-44">
+      <header className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-20 md:pt-20 xl:pb-44">
         <div className="text-center">
           {/* Badge */}
           <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8">
@@ -54,26 +54,28 @@ const HeroSection: React.FC = () => {
           </p>
           
           {/* Stats Row */}
-          <div className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mb-10">
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+          <ul className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mb-10">
+            <li className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
               <TrendingUp className={`w-5 h-5 text-${colors.success}-400`} />
               <span className="text-white font-semibold">{t.stats.retention}</span>
-            </div>
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+            </li>
+            <li className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
               <Clock className={`w-5 h-5 text-${colors.success}-400`} />
               <span className="text-white font-semibold">{t.stats.timePerDay}</span>
-            </div>
-            <div className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
+            </li>
+            <li className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
               <Globe className={`w-5 h-5 text-${colors.success}-400`} />
               <span className="text-white font-semibold">{t.stats.languages}</span>
-            </div>
-          </div>
+            </li>
+          </ul>
           
           {/* CTA Section */}
           <div className="max-w-lg mx-auto">
             <form onSubmit={handleSubmit} className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
               <div className="flex-1 relative">
+                <label htmlFor="hero-email" className="sr-only">Email address</label>
                 <input
+                  id="hero-email"
                   type="email"
                   value={email}
                   onChange={handleEmailChange}
@@ -83,10 +85,11 @@ const HeroSection: React.FC = () => {
                   }`}
                   required
                   disabled={isLoading}
+                  aria-describedby={error ? "hero-email-error" : undefined}
                 />
-                {/* Error message in normal flow for mobile, positioned for desktop */}
+                {/* Error message */}
                 {error && (
-                  <p className="mt-2 text-red-300 text-sm bg-red-500/20 backdrop-blur-sm px-3 py-2 rounded-lg border border-red-400/30 sm:absolute sm:top-full sm:left-0 sm:right-0 sm:mt-2 sm:z-20">
+                  <p id="hero-email-error" role="alert" className="mt-2 text-red-300 text-sm bg-red-500/20 backdrop-blur-sm px-3 py-2 rounded-lg border border-red-400/30 sm:absolute sm:top-full sm:left-0 sm:right-0 sm:mt-2 sm:z-20">
                     {error}
                   </p>
                 )}
@@ -95,16 +98,17 @@ const HeroSection: React.FC = () => {
               <button
                 type="submit"
                 disabled={isLoading}
+                aria-describedby={isLoading ? "button-loading" : undefined}
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 text-base shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none sm:self-start"
               >
                 {isLoading ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>Joining...</span>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
+                    <span id="button-loading">Joining...</span>
                   </>
                 ) : (
                   <>
-                    <Zap className="w-5 h-5" />
+                    <Zap className="w-5 h-5" aria-hidden="true" />
                     <span>{t.cta.button}</span>
                   </>
                 )}
@@ -112,13 +116,13 @@ const HeroSection: React.FC = () => {
             </form>
 
             {/* Add spacing to prevent overlap with content below */}
-            <div className={`transition-all duration-300 ${error ? 'h-12 sm:h-8' : 'h-4 sm:h-0'}`}></div>
+            <div className={`transition-all duration-300 ${error ? 'h-12 sm:h-8' : 'h-4 sm:h-0'}`} aria-hidden="true"></div>
 
             {/* Success Message */}
             {isSubmitted && (
-              <div className="mt-6 p-4 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-2xl">
+              <div role="status" aria-live="polite" className="mt-6 p-4 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-2xl">
                 <div className="flex items-center justify-center space-x-2 mb-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" />
+                  <CheckCircle className="w-5 h-5 text-green-400" aria-hidden="true" />
                   <span className="text-green-300 font-medium">{t.cta.success}</span>
                 </div>
                 <p className="text-green-200 text-sm">
@@ -128,33 +132,33 @@ const HeroSection: React.FC = () => {
             )}
             
             {/* Trust Indicators */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:gap-6">
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-400" />
+            <ul className="mt-8 flex flex-wrap items-center justify-center gap-4 md:gap-6">
+              <li className="flex items-center space-x-2">
+                <CheckCircle className="w-4 h-4 text-green-400" aria-hidden="true" />
                 <span className="text-white/90 font-medium text-md">{t.cta.trust.free}</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-400" />
+              </li>
+              <li className="flex items-center space-x-2">
+                <CheckCircle className="w-4 h-4 text-green-400" aria-hidden="true" />
                 <span className="text-white/90 font-medium text-md">{t.cta.trust.noCard}</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-400" />
+              </li>
+              <li className="flex items-center space-x-2">
+                <CheckCircle className="w-4 h-4 text-green-400" aria-hidden="true" />
                 <span className="text-white/90 font-medium text-md">{t.cta.trust.cancel}</span>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
-      </div>
+      </header>
       
       {/* Bottom Wave - Only on lg screens and above */}
-      <div className="absolute bottom-0 left-0 right-0 block -mb-1">
-        <svg className="w-full h-12 md:h-8 lg:h-20" viewBox="0 0 1200 120" preserveAspectRatio="none" style={{transform: 'rotate(180deg)'}}>
+      <div className="absolute bottom-0 left-0 right-0 block -mb-1" aria-hidden="true">
+        <svg className="w-full h-12 md:h-8 lg:h-20" viewBox="0 0 1200 120" preserveAspectRatio="none" style={{transform: 'rotate(180deg)'}} aria-hidden="true">
           <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="currentColor" className="text-gray-50 hidden xl:block"></path>
           <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39 116.92-43.05c59.73-5.85 113.28 22.88 168.9 38.84 30.2 8.66 59 6.17 87.09-7.5 22.43-10.89 48-26.93 60.65-49.24V0Z" opacity=".5" fill="currentColor" className="text-gray-50 hidden xl:block"></path>
           <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="currentColor" className="text-gray-50 hidden xl:block"></path>
         </svg>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -13,7 +13,7 @@ const CTASection: React.FC = () => {
   } = useWaitlist();
 
   return (
-    <div className="py-16 md:py-24 bg-white">
+    <section className="py-16 md:py-24 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           Ready to Transform Your Vocabulary Learning?
@@ -25,7 +25,9 @@ const CTASection: React.FC = () => {
         <div className="max-w-md mx-auto">
           <form onSubmit={handleSubmit} className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3">
             <div className="flex-1 relative">
+              <label htmlFor="cta-email" className="sr-only">Email address</label>
               <input
+                id="cta-email"
                 type="email"
                 value={email}
                 onChange={handleEmailChange}
@@ -35,9 +37,10 @@ const CTASection: React.FC = () => {
                 }`}
                 required
                 disabled={isLoading}
+                aria-describedby={error ? "cta-email-error" : undefined}
               />
               {error && (
-                <p className="mt-2 text-red-600 text-sm bg-red-50 px-3 py-2 rounded-lg border border-red-200 sm:absolute sm:top-full sm:left-0 sm:right-0 sm:mt-2 sm:z-20 sm:bg-white sm:shadow-lg">
+                <p id="cta-email-error" role="alert" className="mt-2 text-red-600 text-sm bg-red-50 px-3 py-2 rounded-lg border border-red-200 sm:absolute sm:top-full sm:left-0 sm:right-0 sm:mt-2 sm:z-20 sm:bg-white sm:shadow-lg">
                   {error}
                 </p>
               )}
@@ -49,25 +52,25 @@ const CTASection: React.FC = () => {
             >
               {isLoading ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
                   <span>Joining...</span>
                 </>
               ) : (
                 <>
                   <span>Get Early Access</span>
-                  <ChevronRight className="w-4 md:w-5 h-4 md:h-5" />
+                  <ChevronRight className="w-4 md:w-5 h-4 md:h-5" aria-hidden="true" />
                 </>
               )}
             </button>
           </form>
           
           {/* Dynamic spacing based on error state */}
-          <div className={`transition-all duration-300 ${error ? 'h-12 sm:h-8' : 'h-4 sm:h-0'}`}></div>
+          <div className={`transition-all duration-300 ${error ? 'h-12 sm:h-8' : 'h-4 sm:h-0'}`} aria-hidden="true"></div>
           
           {isSubmitted && (
-            <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-xl">
+            <div role="status" aria-live="polite" className="mt-6 p-4 bg-green-50 border border-green-200 rounded-xl">
               <div className="flex items-center justify-center space-x-2 mb-2">
-                <CheckCircle className="w-5 h-5 text-green-600" />
+                <CheckCircle className="w-5 h-5 text-green-600" aria-hidden="true" />
                 <p className="text-green-700 text-sm md:text-base font-medium">
                   You're on the waitlist! Check your email.
                 </p>
@@ -79,7 +82,7 @@ const CTASection: React.FC = () => {
           )}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
