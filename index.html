@@ -7,6 +7,17 @@
     
     <title>Lexipath: Your Path to Better Vocabulary</title>
     
+    <!-- Clear old service workers -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(let registration of registrations) {
+            registration.unregister();
+          }
+        });
+      }
+    </script>
+    
     <meta name="description" content="Lexipath: your path to better vocabulary. Master any language 10x faster with AI-powered vocabulary learning. Revolutionary app with 7 proven exercises and spaced repetition." />
     
     <meta name="keywords" content="Lexipath, vocabulary app, language learning, AI vocabulary, better vocabulary, vocabulary path, word learning, language app, vocabulary building" />
