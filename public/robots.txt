@@ -1,0 +1,11 @@
+# Lexipath - Your path to better vocabulary
+# Allow all search engines to index our landing page
+
+User-agent: *
+Allow: /
+
+# Help search engines find our content
+Sitemap: https://lexipath.xyz/sitemap.xml
+
+# Be gentle with our server
+Crawl-delay: 1

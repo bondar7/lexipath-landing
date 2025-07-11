@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
         <div className="text-center">
           <div className="flex items-center justify-center mb-4">
             <img
-              src='../public/logo.webp'
+              src='/logo.webp'
               alt='Lexipath Logo'
               className='size-12 rounded-2xl'
             >
