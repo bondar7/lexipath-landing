@@ -1,23 +1,35 @@
 ---
-name: Lexipath
+name: Deploy Lexipath Landing Page
+
 on:
   push:
     branches: [ main ]
+
+permissions:
+  contents: write 
+
 jobs:
-  build-push-gcr:
-    name: Build and Deploy
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Build
-      run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
 
-    - name: Deploy
-      run: |
-        git config --global user.name 'Maksym Bondar'
-        git config --global user.email 'maksimbondar225@gmail.com'
-        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}    
-        npm run deploy
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build and Deploy
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          npm run deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
