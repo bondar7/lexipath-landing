@@ -42,7 +42,7 @@ const HeroSection: React.FC = () => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
             {t.title}
             <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              {t.subtitle}
+              {t.subtitle} SUBTITLE
             </span>
           </h1>
           
