@@ -34,3 +34,4 @@ jobs:
           npm run deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VITE_WAITLIST_API_URL: ${{ secrets.VITE_WAITLIST_API_URL }}
