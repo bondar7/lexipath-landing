@@ -18,6 +18,17 @@ const Footer: React.FC = () => {
           <p className="text-gray-400 mb-4 text-sm md:text-base">
             Your path to better vocabulary
           </p>
+          
+          {/* Privacy Policy Link */}
+          <div className="mb-4">
+            <a 
+              href="/privacy" 
+              className="text-gray-400 hover:text-white transition-colors text-xs md:text-sm underline"
+            >
+              Privacy Policy
+            </a>
+          </div>
+          
           <address className="text-gray-500 text-xs md:text-sm not-italic">
             © 2025 Lexipath. Made with ❤️ for language learners.
           </address>
