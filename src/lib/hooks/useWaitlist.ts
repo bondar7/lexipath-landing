@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { WaitlistAPI } from '../api/waitlist';
 import { EmailValidator } from '../validation/email';
+import { trackEmailSignup } from '../utils/analytics';
 
 export interface UseWaitlistReturn {
   email: string;
@@ -41,6 +42,9 @@ export function useWaitlist(): UseWaitlistReturn {
       });
 
       if (result.success) {
+        // Track the signup
+        trackEmailSignup();
+        
         setIsSubmitted(true);
         setEmail('');
         
