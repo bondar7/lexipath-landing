@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Zap, CheckCircle, TrendingUp, Clock, Globe } from 'lucide-react';
+import { Sparkles, Zap, CheckCircle, TrendingUp, Clock, Globe, Gift } from 'lucide-react';
 import { colors } from '../../config/colors';
 import { i18n } from '../../config/i18n';
 import { useWaitlist } from '../../lib/hooks/useWaitlist';
@@ -53,18 +53,24 @@ const HeroSection: React.FC = () => {
             <span className={`text-${colors.primary}-300 font-semibold`}>{t.exercises}</span> {t.exercisesSuffix}
           </p>
           
+          {/* Simple Giveaway Badge */}
+          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 backdrop-blur-sm border border-amber-400/30 rounded-full px-4 py-2 mb-8">
+            <Gift className="w-5 h-5 text-amber-400 flex-shrink-0" />
+            <span className="text-amber-300 font-semibold text-sm">100 Free Pro Subscriptions for Waitlist Members</span>
+          </div>
+          
           {/* Stats Row */}
           <ul className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mb-10">
             <li className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-              <TrendingUp className={`w-5 h-5 text-${colors.success}-400`} />
+              <TrendingUp className={`w-5 h-5 text-${colors.success}-400 flex-shrink-0`} />
               <span className="text-white font-semibold">{t.stats.retention}</span>
             </li>
             <li className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-              <Clock className={`w-5 h-5 text-${colors.success}-400`} />
+              <Clock className={`w-5 h-5 text-${colors.success}-400 flex-shrink-0`} />
               <span className="text-white font-semibold">{t.stats.timePerDay}</span>
             </li>
             <li className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
-              <Globe className={`w-5 h-5 text-${colors.success}-400`} />
+              <Globe className={`w-5 h-5 text-${colors.success}-400 flex-shrink-0`} />
               <span className="text-white font-semibold">{t.stats.languages}</span>
             </li>
           </ul>
@@ -103,12 +109,12 @@ const HeroSection: React.FC = () => {
               >
                 {isLoading ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" aria-hidden="true"></div>
+                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin flex-shrink-0" aria-hidden="true"></div>
                     <span id="button-loading">Joining...</span>
                   </>
                 ) : (
                   <>
-                    <Zap className="w-5 h-5" aria-hidden="true" />
+                    <Zap className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                     <span>{t.cta.button}</span>
                   </>
                 )}
@@ -122,7 +128,7 @@ const HeroSection: React.FC = () => {
             {isSubmitted && (
               <div role="status" aria-live="polite" className="mt-6 p-4 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-2xl">
                 <div className="flex items-center justify-center space-x-2 mb-2">
-                  <CheckCircle className="w-5 h-5 text-green-400" aria-hidden="true" />
+                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" aria-hidden="true" />
                   <span className="text-green-300 font-medium">{t.cta.success}</span>
                 </div>
                 <p className="text-green-200 text-sm">
@@ -134,15 +140,15 @@ const HeroSection: React.FC = () => {
             {/* Trust Indicators */}
             <ul className="mt-8 flex flex-wrap items-center justify-center gap-4 md:gap-6">
               <li className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-400" aria-hidden="true" />
+                <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" aria-hidden="true" />
                 <span className="text-white/90 font-medium text-md">{t.cta.trust.free}</span>
               </li>
               <li className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-400" aria-hidden="true" />
+                <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" aria-hidden="true" />
                 <span className="text-white/90 font-medium text-md">{t.cta.trust.noCard}</span>
               </li>
               <li className="flex items-center space-x-2">
-                <CheckCircle className="w-4 h-4 text-green-400" aria-hidden="true" />
+                <CheckCircle className="w-4 h-4 text-green-400 flex-shrink-0" aria-hidden="true" />
                 <span className="text-white/90 font-medium text-md">{t.cta.trust.cancel}</span>
               </li>
             </ul>
@@ -163,3 +169,4 @@ const HeroSection: React.FC = () => {
 };
 
 export default HeroSection;
+
