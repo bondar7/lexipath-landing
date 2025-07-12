@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
           {/* Privacy Policy Link */}
           <div className="mb-4">
             <a 
-              href="/privacy" 
+              href="/#/privacy"  // This will work with HashRouter
               className="text-gray-400 hover:text-white transition-colors text-xs md:text-sm underline"
             >
               Privacy Policy

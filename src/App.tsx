@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import ComparisonSection from './components/sections/ComparisonSection';
 import CTASection from './components/sections/CTASection';
 import FeatureSection from './components/sections/FeatureSection';
