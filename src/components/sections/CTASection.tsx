@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ChevronRight, CheckCircle, Gift } from 'lucide-react';
 import { useWaitlist } from '../../lib/hooks/useWaitlist';
+import { ReCaptchaEnterprise } from '../ui/ReCaptchaEnterprise';
 
 const CTASection: React.FC = () => {
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  
   const {
     email,
     isSubmitted,
@@ -11,6 +14,10 @@ const CTASection: React.FC = () => {
     handleSubmit,
     handleEmailChange,
   } = useWaitlist();
+
+  const onFormSubmit = async (e: React.FormEvent) => {
+    await handleSubmit(e, recaptchaToken || undefined);
+  };
 
   return (
     <section className="py-16 md:py-24 bg-white">
@@ -29,7 +36,7 @@ const CTASection: React.FC = () => {
         </div>
         
         <div className="max-w-md mx-auto">
-          <form onSubmit={handleSubmit} className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3">
+          <form onSubmit={onFormSubmit} className="flex flex-col space-y-3">
             <div className="flex-1 relative">
               <label htmlFor="cta-email" className="sr-only">Email address</label>
               <input
@@ -51,11 +58,12 @@ const CTASection: React.FC = () => {
                 </p>
               )}
             </div>
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 md:px-8 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2 text-sm md:text-base shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none sm:self-start"
-            >
+            <div className="sm:flex sm:space-x-3">
+              <button
+                type="submit"
+                disabled={isLoading || !recaptchaToken}
+                className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 md:px-8 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2 text-sm md:text-base shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+              >
               {isLoading ? (
                 <>
                   <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin flex-shrink-0" aria-hidden="true"></div>
@@ -67,7 +75,17 @@ const CTASection: React.FC = () => {
                   <ChevronRight className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 </>
               )}
-            </button>
+              </button>
+            </div>
+            
+            {/* reCAPTCHA Enterprise */}
+            <div className="mt-4">
+              <ReCaptchaEnterprise
+                onVerify={setRecaptchaToken}
+                action="email_signup"
+                className="flex justify-center"
+              />
+            </div>
           </form>
           
           {/* Dynamic spacing based on error state */}

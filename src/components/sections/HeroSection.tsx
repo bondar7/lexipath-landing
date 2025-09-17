@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Sparkles, Zap, CheckCircle, TrendingUp, Clock, Globe, Gift } from 'lucide-react';
 import { colors } from '../../config/colors';
 import { i18n } from '../../config/i18n';
 import { useWaitlist } from '../../lib/hooks/useWaitlist';
+import { ReCaptchaEnterprise } from '../ui/ReCaptchaEnterprise';
 
 const HeroSection: React.FC = () => {
   const t = i18n.en.hero;
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  
   const {
     email,
     isSubmitted,
@@ -14,6 +17,10 @@ const HeroSection: React.FC = () => {
     handleSubmit,
     handleEmailChange,
   } = useWaitlist();
+
+  const onFormSubmit = async (e: React.FormEvent) => {
+    await handleSubmit(e, recaptchaToken || undefined);
+  };
 
   return (
     <section className="relative overflow-hidden">
@@ -77,48 +84,59 @@ const HeroSection: React.FC = () => {
           
           {/* CTA Section */}
           <div className="max-w-lg mx-auto">
-            <form onSubmit={handleSubmit} className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <div className="flex-1 relative">
-                <label htmlFor="hero-email" className="sr-only">Email address</label>
-                <input
-                  id="hero-email"
-                  type="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  placeholder={t.cta.placeholder}
-                  className={`w-full px-6 py-4 bg-white/10 backdrop-blur-sm border rounded-2xl focus:ring-2 focus:ring-blue-400 focus:border-blue-400 text-white placeholder-white/60 text-base transition-colors ${
-                    error ? 'border-red-400 focus:ring-red-400 focus:border-red-400' : 'border-white/20'
-                  }`}
-                  required
-                  disabled={isLoading}
-                  aria-describedby={error ? "hero-email-error" : undefined}
-                />
-                {/* Error message */}
-                {error && (
-                  <p id="hero-email-error" role="alert" className="mt-2 text-red-300 text-sm bg-red-500/20 backdrop-blur-sm px-3 py-2 rounded-lg border border-red-400/30 sm:absolute sm:top-full sm:left-0 sm:right-0 sm:mt-2 sm:z-20">
-                    {error}
-                  </p>
-                )}
+            <form onSubmit={onFormSubmit} className="flex flex-col space-y-4">
+              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <div className="flex-1 relative">
+                  <label htmlFor="hero-email" className="sr-only">Email address</label>
+                  <input
+                    id="hero-email"
+                    type="email"
+                    value={email}
+                    onChange={handleEmailChange}
+                    placeholder={t.cta.placeholder}
+                    className={`w-full px-6 py-4 bg-white/10 backdrop-blur-sm border rounded-2xl focus:ring-2 focus:ring-blue-400 focus:border-blue-400 text-white placeholder-white/60 text-base transition-colors ${
+                      error ? 'border-red-400 focus:ring-red-400 focus:border-red-400' : 'border-white/20'
+                    }`}
+                    required
+                    disabled={isLoading}
+                    aria-describedby={error ? "hero-email-error" : undefined}
+                  />
+                  {/* Error message */}
+                  {error && (
+                    <p id="hero-email-error" role="alert" className="mt-2 text-red-300 text-sm bg-red-500/20 backdrop-blur-sm px-3 py-2 rounded-lg border border-red-400/30 sm:absolute sm:top-full sm:left-0 sm:right-0 sm:mt-2 sm:z-20">
+                      {error}
+                    </p>
+                  )}
+                </div>
+                
+                <button
+                  type="submit"
+                  disabled={isLoading || !recaptchaToken}
+                  aria-describedby={isLoading ? "button-loading" : undefined}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 text-base shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none sm:self-start"
+                >
+                  {isLoading ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin flex-shrink-0" aria-hidden="true"></div>
+                      <span id="button-loading">Joining...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Zap className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                      <span>{t.cta.button}</span>
+                    </>
+                  )}
+                </button>
               </div>
               
-              <button
-                type="submit"
-                disabled={isLoading}
-                aria-describedby={isLoading ? "button-loading" : undefined}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 text-base shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none sm:self-start"
-              >
-                {isLoading ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin flex-shrink-0" aria-hidden="true"></div>
-                    <span id="button-loading">Joining...</span>
-                  </>
-                ) : (
-                  <>
-                    <Zap className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
-                    <span>{t.cta.button}</span>
-                  </>
-                )}
-              </button>
+              {/* reCAPTCHA Enterprise */}
+              <div className="mt-4">
+                <ReCaptchaEnterprise
+                  onVerify={setRecaptchaToken}
+                  action="email_signup"
+                  className="flex justify-center"
+                />
+              </div>
             </form>
 
             {/* Add spacing to prevent overlap with content below */}

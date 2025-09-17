@@ -9,7 +9,7 @@ export interface UseWaitlistReturn {
   isSubmitted: boolean;
   isLoading: boolean;
   error: string;
-  handleSubmit: (e: React.FormEvent) => Promise<void>;
+  handleSubmit: (e: React.FormEvent, recaptchaToken?: string) => Promise<void>;
   handleEmailChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -24,7 +24,7 @@ export function useWaitlist(): UseWaitlistReturn {
     if (error) setError('');
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent, recaptchaToken?: string) => {
     e.preventDefault();
     
     const validation = EmailValidator.validate(email);
@@ -33,12 +33,19 @@ export function useWaitlist(): UseWaitlistReturn {
       return;
     }
 
+    // Check for reCAPTCHA token
+    if (!recaptchaToken) {
+      setError('Please complete the reCAPTCHA verification.');
+      return;
+    }
+
     setIsLoading(true);
     setError('');
 
     try {
       const result = await WaitlistAPI.joinWaitlist({ 
-        email: EmailValidator.normalize(email) 
+        email: EmailValidator.normalize(email),
+        recaptchaToken
       });
 
       if (result.success) {

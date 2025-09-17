@@ -13,11 +13,13 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@types/react-google-recaptcha": "^2.1.9",
     "@types/validator": "^13.15.2",
     "gtag": "^1.0.1",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-google-recaptcha": "^3.1.0",
     "react-router-dom": "^7.6.3",
     "validator": "^13.15.15"
   },
