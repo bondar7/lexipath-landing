@@ -1,8 +1,19 @@
 import { useState } from 'react';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { WaitlistAPI } from '../api/waitlist';
 import { EmailValidator } from '../validation/email';
 import { trackEmailSignup } from '../utils/analytics';
+
+// Global type for reCAPTCHA
+declare global {
+  interface Window {
+    grecaptcha: {
+      ready: (callback: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
+
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
 export interface UseWaitlistReturn {
   email: string;
@@ -19,7 +30,6 @@ export function useWaitlist(): UseWaitlistReturn {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
-  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -39,10 +49,23 @@ export function useWaitlist(): UseWaitlistReturn {
     setError('');
 
     try {
-      // Execute reCAPTCHA v3
+      // Execute reCAPTCHA v3 on form submission - native approach
       let recaptchaToken: string | null = null;
-      if (executeRecaptcha) {
-        recaptchaToken = await executeRecaptcha('email_signup');
+      if (RECAPTCHA_SITE_KEY && window.grecaptcha) {
+        try {
+          recaptchaToken = await new Promise<string>((resolve, reject) => {
+            window.grecaptcha.ready(() => {
+              window.grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'email_signup' })
+                .then(resolve)
+                .catch(reject);
+            });
+          });
+          console.log('reCAPTCHA token generated successfully');
+        } catch (recaptchaError) {
+          console.warn('reCAPTCHA execution failed:', recaptchaError);
+        }
+      } else {
+        console.warn('reCAPTCHA not available');
       }
 
       const result = await WaitlistAPI.joinWaitlist({ 
