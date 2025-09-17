@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Sparkles, Zap, CheckCircle, TrendingUp, Clock, Globe, Gift } from 'lucide-react';
 import { colors } from '../../config/colors';
 import { i18n } from '../../config/i18n';
 import { useWaitlist } from '../../lib/hooks/useWaitlist';
-import { ReCaptchaEnterprise } from '../ui/ReCaptchaEnterprise';
+import { ReCaptchaEnterprise, ReCaptchaV3Ref } from '../ui/ReCaptchaEnterprise';
 
 const HeroSection: React.FC = () => {
   const t = i18n.en.hero;
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCaptchaV3Ref>(null);
   
   const {
     email,
@@ -19,7 +20,17 @@ const HeroSection: React.FC = () => {
   } = useWaitlist();
 
   const onFormSubmit = async (e: React.FormEvent) => {
-    await handleSubmit(e, recaptchaToken || undefined);
+    e.preventDefault();
+    
+    // Execute reCAPTCHA first
+    if (recaptchaRef.current) {
+      await recaptchaRef.current.execute();
+    }
+    
+    // Wait a moment for reCAPTCHA to set the token
+    setTimeout(async () => {
+      await handleSubmit(e, recaptchaToken || undefined);
+    }, 100);
   };
 
   return (
@@ -111,7 +122,7 @@ const HeroSection: React.FC = () => {
                 
                 <button
                   type="submit"
-                  disabled={isLoading || !recaptchaToken}
+                  disabled={isLoading}
                   aria-describedby={isLoading ? "button-loading" : undefined}
                   className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 text-base shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none sm:self-start"
                 >
@@ -132,6 +143,7 @@ const HeroSection: React.FC = () => {
               {/* reCAPTCHA Enterprise */}
               <div className="mt-4">
                 <ReCaptchaEnterprise
+                  ref={recaptchaRef}
                   onVerify={setRecaptchaToken}
                   action="email_signup"
                   className="flex justify-center"

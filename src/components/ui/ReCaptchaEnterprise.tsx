@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useImperativeHandle, forwardRef } from 'react';
 
 interface ReCaptchaV3Props {
   onVerify: (token: string | null) => void;
   onError?: () => void;
   action?: string;
   className?: string;
+}
+
+export interface ReCaptchaV3Ref {
+  execute: () => Promise<void>;
 }
 
 declare global {
@@ -18,12 +22,15 @@ declare global {
 
 const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 
-export const ReCaptchaV3: React.FC<ReCaptchaV3Props> = ({
-  onVerify,
-  onError,
-  action = 'email_signup',
-  className = ''
-}) => {
+export const ReCaptchaV3 = forwardRef<ReCaptchaV3Ref, ReCaptchaV3Props>((
+  {
+    onVerify,
+    onError,
+    action = 'email_signup',
+    className = ''
+  },
+  ref
+) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isExecuting, setIsExecuting] = useState(false);
 
@@ -44,8 +51,6 @@ export const ReCaptchaV3: React.FC<ReCaptchaV3Props> = ({
       script.onload = () => {
         window.grecaptcha.ready(() => {
           setIsLoaded(true);
-          // Auto-execute reCAPTCHA v3 on load (invisible)
-          executeRecaptcha();
         });
       };
       
@@ -58,8 +63,6 @@ export const ReCaptchaV3: React.FC<ReCaptchaV3Props> = ({
     } else {
       window.grecaptcha.ready(() => {
         setIsLoaded(true);
-        // Auto-execute if already loaded
-        executeRecaptcha();
       });
     }
   }, [onError]);
@@ -86,6 +89,11 @@ export const ReCaptchaV3: React.FC<ReCaptchaV3Props> = ({
     }
   };
 
+  // Expose execute method to parent components
+  useImperativeHandle(ref, () => ({
+    execute: executeRecaptcha
+  }));
+
   return (
     <div className={`recaptcha-v3 ${className}`}>
       {!isLoaded && (
@@ -100,7 +108,7 @@ export const ReCaptchaV3: React.FC<ReCaptchaV3Props> = ({
           <div className="w-4 h-4 bg-green-500 rounded-full flex items-center justify-center">
             <div className="w-2 h-2 bg-white rounded-full"></div>
           </div>
-          <span>Security verified</span>
+          <span>Security ready</span>
         </div>
       )}
       
@@ -124,7 +132,9 @@ export const ReCaptchaV3: React.FC<ReCaptchaV3Props> = ({
       </div>
     </div>
   );
-};
+});
+
+ReCaptchaV3.displayName = 'ReCaptchaV3';
 
 // Keep the old export name for compatibility
 export const ReCaptchaEnterprise = ReCaptchaV3;
