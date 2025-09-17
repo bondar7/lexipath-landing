@@ -1,14 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { Sparkles, Zap, CheckCircle, TrendingUp, Clock, Globe, Gift } from 'lucide-react';
 import { colors } from '../../config/colors';
 import { i18n } from '../../config/i18n';
 import { useWaitlist } from '../../lib/hooks/useWaitlist';
-import { ReCaptchaEnterprise, ReCaptchaV3Ref } from '../ui/ReCaptchaEnterprise';
 
 const HeroSection: React.FC = () => {
   const t = i18n.en.hero;
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-  const recaptchaRef = useRef<ReCaptchaV3Ref>(null);
   
   const {
     email,
@@ -18,20 +15,6 @@ const HeroSection: React.FC = () => {
     handleSubmit,
     handleEmailChange,
   } = useWaitlist();
-
-  const onFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Execute reCAPTCHA first
-    if (recaptchaRef.current) {
-      await recaptchaRef.current.execute();
-    }
-    
-    // Wait a moment for reCAPTCHA to set the token
-    setTimeout(async () => {
-      await handleSubmit(e, recaptchaToken || undefined);
-    }, 100);
-  };
 
   return (
     <section className="relative overflow-hidden">
@@ -95,9 +78,8 @@ const HeroSection: React.FC = () => {
           
           {/* CTA Section */}
           <div className="max-w-lg mx-auto">
-            <form onSubmit={onFormSubmit} className="flex flex-col space-y-4">
-              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <div className="flex-1 relative">
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+              <div className="flex-1 relative">
                   <label htmlFor="hero-email" className="sr-only">Email address</label>
                   <input
                     id="hero-email"
@@ -118,9 +100,9 @@ const HeroSection: React.FC = () => {
                       {error}
                     </p>
                   )}
-                </div>
-                
-                <button
+              </div>
+              
+              <button
                   type="submit"
                   disabled={isLoading}
                   aria-describedby={isLoading ? "button-loading" : undefined}
@@ -137,18 +119,7 @@ const HeroSection: React.FC = () => {
                       <span>{t.cta.button}</span>
                     </>
                   )}
-                </button>
-              </div>
-              
-              {/* reCAPTCHA Enterprise */}
-              <div className="mt-4">
-                <ReCaptchaEnterprise
-                  ref={recaptchaRef}
-                  onVerify={setRecaptchaToken}
-                  action="email_signup"
-                  className="flex justify-center"
-                />
-              </div>
+              </button>
             </form>
 
             {/* Add spacing to prevent overlap with content below */}

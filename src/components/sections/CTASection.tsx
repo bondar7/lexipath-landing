@@ -1,12 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { ChevronRight, CheckCircle, Gift } from 'lucide-react';
 import { useWaitlist } from '../../lib/hooks/useWaitlist';
-import { ReCaptchaEnterprise, ReCaptchaV3Ref } from '../ui/ReCaptchaEnterprise';
 
 const CTASection: React.FC = () => {
-  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-  const recaptchaRef = useRef<ReCaptchaV3Ref>(null);
-  
   const {
     email,
     isSubmitted,
@@ -15,20 +11,6 @@ const CTASection: React.FC = () => {
     handleSubmit,
     handleEmailChange,
   } = useWaitlist();
-
-  const onFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Execute reCAPTCHA first
-    if (recaptchaRef.current) {
-      await recaptchaRef.current.execute();
-    }
-    
-    // Wait a moment for reCAPTCHA to set the token
-    setTimeout(async () => {
-      await handleSubmit(e, recaptchaToken || undefined);
-    }, 100);
-  };
 
   return (
     <section className="py-16 md:py-24 bg-white">
@@ -47,7 +29,7 @@ const CTASection: React.FC = () => {
         </div>
         
         <div className="max-w-md mx-auto">
-          <form onSubmit={onFormSubmit} className="flex flex-col space-y-3">
+          <form onSubmit={handleSubmit} className="flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-3">
             <div className="flex-1 relative">
               <label htmlFor="cta-email" className="sr-only">Email address</label>
               <input
@@ -69,11 +51,10 @@ const CTASection: React.FC = () => {
                 </p>
               )}
             </div>
-            <div className="sm:flex sm:space-x-3">
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 md:px-8 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2 text-sm md:text-base shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 md:px-8 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2 text-sm md:text-base shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none sm:self-start"
               >
               {isLoading ? (
                 <>
@@ -86,18 +67,7 @@ const CTASection: React.FC = () => {
                   <ChevronRight className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 </>
               )}
-              </button>
-            </div>
-            
-            {/* reCAPTCHA Enterprise */}
-            <div className="mt-4">
-              <ReCaptchaEnterprise
-                ref={recaptchaRef}
-                onVerify={setRecaptchaToken}
-                action="email_signup"
-                className="flex justify-center"
-              />
-            </div>
+            </button>
           </form>
           
           {/* Dynamic spacing based on error state */}
