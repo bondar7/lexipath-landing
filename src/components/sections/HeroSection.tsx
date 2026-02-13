@@ -1,20 +1,10 @@
 import React from 'react';
-import { Sparkles, Zap, CheckCircle, TrendingUp, Clock, Globe, Gift } from 'lucide-react';
+import { Sparkles, Zap, CheckCircle, TrendingUp, Clock, Globe } from 'lucide-react';
 import { colors } from '../../config/colors';
 import { i18n } from '../../config/i18n';
-import { useWaitlist } from '../../lib/hooks/useWaitlist';
 
 const HeroSection: React.FC = () => {
   const t = i18n.en.hero;
-  
-  const {
-    email,
-    isSubmitted,
-    isLoading,
-    error,
-    handleSubmit,
-    handleEmailChange,
-  } = useWaitlist();
 
   return (
     <section className="relative overflow-hidden">
@@ -54,12 +44,6 @@ const HeroSection: React.FC = () => {
             <span className={`text-${colors.primary}-300 font-semibold`}>{t.exercises}</span> {t.exercisesSuffix}
           </p>
           
-          {/* Simple Giveaway Badge */}
-          <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-amber-500/20 to-orange-500/20 backdrop-blur-sm border border-amber-400/30 rounded-full px-4 py-2 mb-8">
-            <Gift className="w-5 h-5 text-amber-400 flex-shrink-0" />
-            <span className="text-amber-300 font-semibold text-sm">100 Free Pro Subscriptions for Waitlist Members</span>
-          </div>
-          
           {/* Stats Row */}
           <ul className="flex flex-wrap items-center justify-center gap-6 md:gap-8 mb-10">
             <li className="flex items-center space-x-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2">
@@ -78,65 +62,15 @@ const HeroSection: React.FC = () => {
           
           {/* CTA Section */}
           <div className="max-w-lg mx-auto">
-            <form onSubmit={handleSubmit} className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <div className="flex-1 relative">
-                  <label htmlFor="hero-email" className="sr-only">Email address</label>
-                  <input
-                    id="hero-email"
-                    type="email"
-                    value={email}
-                    onChange={handleEmailChange}
-                    placeholder={t.cta.placeholder}
-                    className={`w-full px-6 py-4 bg-white/10 backdrop-blur-sm border rounded-2xl focus:ring-2 focus:ring-blue-400 focus:border-blue-400 text-white placeholder-white/60 text-base transition-colors ${
-                      error ? 'border-red-400 focus:ring-red-400 focus:border-red-400' : 'border-white/20'
-                    }`}
-                    required
-                    disabled={isLoading}
-                    aria-describedby={error ? "hero-email-error" : undefined}
-                  />
-                  {/* Error message */}
-                  {error && (
-                    <p id="hero-email-error" role="alert" className="mt-2 text-red-300 text-sm bg-red-500/20 backdrop-blur-sm px-3 py-2 rounded-lg border border-red-400/30 sm:absolute sm:top-full sm:left-0 sm:right-0 sm:mt-2 sm:z-20">
-                      {error}
-                    </p>
-                  )}
-              </div>
-              
-              <button
-                  type="submit"
-                  disabled={isLoading}
-                  aria-describedby={isLoading ? "button-loading" : undefined}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2 text-base shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none sm:self-start"
-                >
-                  {isLoading ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin flex-shrink-0" aria-hidden="true"></div>
-                      <span id="button-loading">Joining...</span>
-                    </>
-                  ) : (
-                    <>
-                      <Zap className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
-                      <span>{t.cta.button}</span>
-                    </>
-                  )}
-              </button>
-            </form>
-
-            {/* Add spacing to prevent overlap with content below */}
-            <div className={`transition-all duration-300 ${error ? 'h-12 sm:h-8' : 'h-4 sm:h-0'}`} aria-hidden="true"></div>
-
-            {/* Success Message */}
-            {isSubmitted && (
-              <div role="status" aria-live="polite" className="mt-6 p-4 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-2xl">
-                <div className="flex items-center justify-center space-x-2 mb-2">
-                  <CheckCircle className="w-5 h-5 text-green-400 flex-shrink-0" aria-hidden="true" />
-                  <span className="text-green-300 font-medium">{t.cta.success}</span>
-                </div>
-                <p className="text-green-200 text-sm">
-                  Don't see our email? Check your spam folder.
-                </p>
-              </div>
-            )}
+            <div className="flex justify-center">
+              <a
+                href="https://app.lexipath.xyz"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center space-x-2 text-base shadow-2xl"
+              >
+                <Zap className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                <span>Open the App</span>
+              </a>
+            </div>
             
             {/* Trust Indicators */}
             <ul className="mt-8 flex flex-wrap items-center justify-center gap-4 md:gap-6">
@@ -170,4 +104,3 @@ const HeroSection: React.FC = () => {
 };
 
 export default HeroSection;
-
