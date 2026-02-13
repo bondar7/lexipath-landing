@@ -10,7 +10,7 @@ export const i18n = {
       stats: {
         retention: "3x Retention Rate",
         timePerDay: "30 Min/Day",
-        languages: "15+ Languages"
+        languages: "Multi Languages"
       },
       cta: {
         placeholder: "Enter your email",
