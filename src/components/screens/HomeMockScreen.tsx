@@ -176,14 +176,14 @@ export default function HomeMockScreen() {
 
       <main className="space-y-5 px-2 py-3 pb-28">
         <div className="w-full">
-          <MockCard className="relative overflow-hidden border p-0 shadow-lg min-h-[100px] gap-2.5">
-            <div className="flex flex-col gap-2 p-2.5">
+          <MockCard className="relative overflow-hidden border p-0 shadow-lg min-h-[100px] md:min-h-[124px] gap-2.5">
+            <div className="flex flex-col gap-2 p-2.5 md:p-3">
               <div className="flex items-start justify-between">
                 <div className="space-y-1">
-                  <h3 className="text-sm font-bold tracking-tight">Daily Focus</h3>
-                  <p className="text-muted-foreground text-[11px] font-medium">{todayCount} / {goal} words practiced</p>
+                  <h3 className="text-sm md:text-lg font-bold tracking-tight">Daily Focus</h3>
+                  <p className="text-muted-foreground text-[11px] md:text-sm font-medium">{todayCount} / {goal} words practiced</p>
                 </div>
-                <div className="relative flex size-11 items-center justify-center">
+                <div className="relative flex size-11 md:size-16 items-center justify-center">
                   <svg className="size-full -rotate-90" viewBox="0 0 56 56">
                     <circle cx="28" cy="28" r="24" className="stroke-border" strokeWidth="4" fill="none" />
                     <circle
@@ -191,28 +191,28 @@ export default function HomeMockScreen() {
                       strokeDasharray={circumference} strokeDashoffset={offset} strokeLinecap="round"
                     />
                   </svg>
-                  <span className="absolute text-[9px] font-bold text-foreground">{progress}%</span>
+                  <span className="absolute text-[9px] md:text-xs font-bold text-foreground">{progress}%</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 md:gap-6">
                 <div className="flex items-center gap-2">
-                  <div className="p-1.5 rounded-full bg-background border shadow-sm">
-                    <GraduationCap className="size-3 text-primary" />
+                  <div className="p-1.5 md:p-2 rounded-full bg-background border shadow-sm">
+                    <GraduationCap className="size-3 md:size-4 text-primary" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold text-foreground">{mockStats.total_vocabulary} words</p>
-                    <p className="text-muted-foreground text-[8px] font-medium uppercase">total</p>
+                    <p className="text-[10px] md:text-xs font-bold text-foreground">{mockStats.total_vocabulary} words</p>
+                    <p className="text-muted-foreground text-[8px] md:text-[10px] font-medium uppercase">total</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <div className="p-1.5 rounded-full bg-background border shadow-sm">
-                    <Flame className="size-3 text-primary" />
+                  <div className="p-1.5 md:p-2 rounded-full bg-background border shadow-sm">
+                    <Flame className="size-3 md:size-4 text-primary" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-bold text-foreground">{mockStats.streak} days</p>
-                    <p className="text-muted-foreground text-[8px] font-medium uppercase">streak</p>
+                    <p className="text-[10px] md:text-xs font-bold text-foreground">{mockStats.streak} days</p>
+                    <p className="text-muted-foreground text-[8px] md:text-[10px] font-medium uppercase">streak</p>
                   </div>
                 </div>
               </div>

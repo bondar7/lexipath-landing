@@ -7,18 +7,21 @@ html, body {
   background-color: #f9fafb; /* gray-50 to match page background */
   margin: 0;
   padding: 0;
+  height: auto;
   min-height: 100%;
   overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 /* Prevent elastic scrolling on mobile */
 body {
-  overscroll-behavior: none;
+  overscroll-behavior: auto;
 }
 
 /* Ensure root element covers full height */
 #root {
   min-height: 100%;
+  height: auto;
   background-color: #f9fafb; /* gray-50 */
 }
 
