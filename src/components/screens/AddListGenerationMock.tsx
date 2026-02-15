@@ -38,9 +38,9 @@ export default function AddListGenerationMock() {
         }
       />
 
-      <main className="space-y-6 sm:space-y-8 px-3 sm:px-4 py-4 sm:py-6 pb-20 sm:pb-24">
+      <main className="space-y-6 px-3 py-4 pb-20">
         <div className="space-y-3">
-          <h3 className="text-center text-xs sm:text-sm font-bold uppercase tracking-wider text-muted-foreground">
+          <h3 className="text-center text-xs font-bold uppercase tracking-wider text-muted-foreground">
             Topic
           </h3>
           <MockInput
@@ -53,7 +53,7 @@ export default function AddListGenerationMock() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-center text-xs sm:text-sm font-bold uppercase tracking-wider text-muted-foreground">
+          <h3 className="text-center text-xs font-bold uppercase tracking-wider text-muted-foreground">
             Number of words
           </h3>
           <MockInput
@@ -67,15 +67,15 @@ export default function AddListGenerationMock() {
           />
         </div>
 
-        <div className="space-y-4">
-          <h3 className="text-center text-xs sm:text-sm font-bold uppercase tracking-wider text-muted-foreground">Select difficulty level</h3>
-          <div className="grid grid-cols-6 gap-2">
+        <div className="space-y-4 pb-3">
+          <h3 className="text-center text-xs font-bold uppercase tracking-wider text-muted-foreground">Select difficulty level</h3>
+          <div className="grid grid-cols-6 gap-1.5">
             {LEVELS.map((level) => (
               <MockButton
                 key={level}
                 variant={selectedLevel === level ? 'default' : 'outline'}
                 onClick={() => setSelectedLevel(level)}
-                className={cn('h-9 sm:h-10 text-xs sm:text-sm font-semibold px-2', selectedLevel === level && 'shadow-md')}
+                className={cn('h-8 text-[11px] font-semibold px-1.5', selectedLevel === level && 'shadow-md')}
               >
                 {level}
               </MockButton>
@@ -83,8 +83,8 @@ export default function AddListGenerationMock() {
           </div>
         </div>
 
-        <div className="space-y-4">
-          <h3 className="text-center text-xs sm:text-sm font-bold uppercase tracking-wider text-muted-foreground">
+        <div className="space-y-4 pb-2">
+          <h3 className="text-center text-xs font-bold uppercase tracking-wider text-muted-foreground">
             Suggested topics
           </h3>
           <div className="grid grid-cols-2 gap-3">
@@ -96,21 +96,25 @@ export default function AddListGenerationMock() {
                   type="button"
                   onClick={() => setTopic(item.title)}
                   className={cn(
-                    'flex items-center justify-center gap-2 sm:gap-3 p-3 sm:p-5 rounded-xl sm:rounded-2xl border-2 transition-all h-14 sm:h-20 hover:border-primary/50 hover:shadow-sm active:scale-[0.98]',
+                    'flex items-center justify-center gap-2 p-3 rounded-xl border-2 transition-all h-14 hover:border-primary/50 hover:shadow-sm active:scale-[0.98]',
                     isSelected ? 'border-primary bg-primary/10 shadow-md' : 'bg-card border-border'
                   )}
                 >
-                  <span className="text-xl sm:text-3xl">{item.emoji}</span>
-                  <span className="font-semibold text-xs sm:text-base">{item.title}</span>
+                  <span className="text-xl md:text-2xl">{item.emoji}</span>
+                  <span className="font-semibold text-[10px] md:text-sm">{item.title}</span>
                 </button>
               );
             })}
           </div>
         </div>
 
-        <MockButton size="lg" className="w-full h-12 sm:h-14 text-sm sm:text-lg">
-          Generate list
-        </MockButton>
+        <div className="mt-4 w-full">
+          <a href="https://app.lexipath.xyz" className="block w-full">
+            <MockButton size="lg" className="w-full h-11 md:h-12 text-xs md:text-sm">
+            Generate list
+            </MockButton>
+          </a>
+        </div>
       </main>
 
       <MockBottomBar active="add" />

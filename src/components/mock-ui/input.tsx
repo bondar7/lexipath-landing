@@ -4,9 +4,9 @@ import { cn } from './cn';
 type InputSize = 'default' | 'sm' | 'lg';
 
 const sizeClasses: Record<InputSize, string> = {
-  default: 'h-10 sm:h-12 px-3 sm:px-4 py-2.5 sm:py-3 text-sm sm:text-base rounded-xl',
-  sm: 'h-9 sm:h-10 px-3 py-2 text-xs sm:text-sm rounded-lg',
-  lg: 'h-12 sm:h-14 px-4 sm:px-5 py-3 sm:py-3.5 text-sm sm:text-base rounded-xl',
+  default: 'h-10 px-3 py-2.5 text-sm rounded-xl',
+  sm: 'h-9 px-3 py-2 text-xs rounded-lg',
+  lg: 'h-12 px-4 py-3 text-sm rounded-xl',
 };
 
 export function MockInput({

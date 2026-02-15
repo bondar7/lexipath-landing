@@ -26,11 +26,11 @@ export function MockHeaderWrapper({
         className,
       )}
     >
-      <div className="grid h-12 sm:h-16 grid-cols-[1fr_auto_1fr] items-center px-2 sm:px-4">
+      <div className="grid h-12 grid-cols-[1fr_auto_1fr] items-center px-2">
         <div className="flex min-w-0 items-center justify-start">{left}</div>
-        <div className="flex min-w-0 items-center justify-center px-1 sm:px-2 overflow-hidden">
+        <div className="flex min-w-0 items-center justify-center px-1 overflow-hidden">
           {title ? (
-            <h2 className="w-full truncate text-center font-semibold sm:font-bold tracking-tight leading-tight text-base sm:text-2xl max-w-[calc(100vw-8.5rem)] sm:max-w-none">
+            <h2 className="w-full truncate text-center font-semibold tracking-tight leading-tight text-base max-w-[calc(100vw-8.5rem)]">
               {title}
             </h2>
           ) : (

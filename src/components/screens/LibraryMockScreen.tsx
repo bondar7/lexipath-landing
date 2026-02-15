@@ -7,9 +7,9 @@ import { MockBottomBar } from '../mock-ui/bottom-bar';
 import { cn } from '../mock-ui/cn';
 
 const headerIconButtonClass =
-  'h-9 w-9 sm:h-10 sm:w-10 rounded-full text-muted-foreground hover:bg-primary/10 hover:text-primary';
+  'h-9 w-9 rounded-full text-muted-foreground hover:bg-primary/10 hover:text-primary';
 const headerButtonClass =
-  'h-9 sm:h-10 rounded-full text-muted-foreground hover:bg-primary/10 hover:text-primary';
+  'h-9 rounded-full text-muted-foreground hover:bg-primary/10 hover:text-primary';
 
 const mockLists = [
   { id: '1', title: 'Práce - Úroveň B1', wordCount: 30, status: 'Started', isPinned: false },
@@ -57,7 +57,7 @@ function ListItem({
   return (
     <div
       className={cn(
-        'flex h-16 sm:h-20 cursor-pointer items-center justify-between border-b px-3 sm:px-4 py-3 sm:py-4 transition-colors duration-150 ease-in-out',
+        'flex h-16 cursor-pointer items-center justify-between border-b px-3 py-3 transition-colors duration-150 ease-in-out',
         !isEditMode && 'active:bg-muted/50'
       )}
     >
@@ -75,20 +75,20 @@ function ListItem({
             aria-label={isPinned ? 'Unpin list' : 'Pin list'}
           >
             {isPinned ? (
-              <Pin className="h-4 w-4 sm:h-5 sm:w-5 text-primary" fill="currentColor" />
+              <Pin className="h-4 w-4 text-primary" fill="currentColor" />
             ) : (
-              <Pin className="h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
+              <Pin className="h-4 w-4 text-muted-foreground" />
             )}
           </button>
         )}
         <div>
-          <p className="text-sm sm:text-base font-semibold text-foreground flex items-center gap-2">{title}</p>
-          <p className="text-xs sm:text-sm text-muted-foreground">
+          <p className="text-sm font-semibold text-foreground flex items-center gap-2">{title}</p>
+          <p className="text-xs text-muted-foreground">
             {wordCount} words • <span className={cn(statusColorClass)}>{displayStatus}</span>
           </p>
         </div>
       </div>
-      {!isEditMode && <ChevronRight className="h-5 w-5 sm:h-7 sm:w-7 text-primary" />}
+      {!isEditMode && <ChevronRight className="h-5 w-5 text-primary" />}
     </div>
   );
 }
@@ -169,22 +169,22 @@ export default function LibraryMockScreen() {
         />
       )}
 
-      <div className="relative p-3 sm:p-4">
-        <Search className="absolute left-6 sm:left-7 top-1/2 h-3.5 w-3.5 sm:h-4 sm:w-4 -translate-y-1/2 text-muted-foreground" />
+      <div className="relative p-3">
+        <Search className="absolute left-6 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
         <MockInput
           type="text"
           placeholder="Search lists..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="pl-9 sm:pl-10 pr-3 sm:pr-4"
+          className="pl-9 pr-3"
           disabled={isEditMode}
         />
       </div>
 
-      <div className="flex-1 overflow-y-auto pb-20 sm:pb-24">
+      <div className="flex-1 overflow-y-auto pb-20">
         {pinnedLists.length > 0 && (
           <div className="mb-6">
-            <h3 className="px-3 sm:px-4 pb-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground">Pinned</h3>
+            <h3 className="px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Pinned</h3>
             <div className="bg-card">
               {pinnedLists.map((list) => (
                 <ListItem
@@ -203,7 +203,7 @@ export default function LibraryMockScreen() {
           </div>
         )}
 
-        <h3 className="px-3 sm:px-4 pb-2 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground">All lists</h3>
+        <h3 className="px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-muted-foreground">All lists</h3>
         <div className="bg-card">
           {otherLists.map((list) => (
             <ListItem

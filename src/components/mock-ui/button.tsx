@@ -15,12 +15,12 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
-  default: 'h-10 sm:h-12 px-4 sm:px-5 py-2.5 sm:py-3 has-[>svg]:px-3 sm:has-[>svg]:px-4 text-sm sm:text-base',
-  sm: 'h-9 sm:h-10 rounded-lg gap-1 px-3 sm:px-4 has-[>svg]:px-2.5 sm:has-[>svg]:px-3 text-xs sm:text-sm',
-  lg: 'h-12 sm:h-14 rounded-xl px-4 sm:px-6 has-[>svg]:px-4 sm:has-[>svg]:px-5 text-sm sm:text-base',
-  icon: 'size-10 sm:size-12 rounded-xl',
-  'icon-sm': 'size-9 sm:size-10 rounded-lg',
-  'icon-lg': 'size-12 sm:size-14 rounded-xl',
+  default: 'h-10 px-4 py-2.5 has-[>svg]:px-3 text-sm',
+  sm: 'h-9 rounded-lg gap-1 px-3 has-[>svg]:px-2.5 text-xs',
+  lg: 'h-12 rounded-xl px-4 has-[>svg]:px-4 text-sm',
+  icon: 'size-10 rounded-xl',
+  'icon-sm': 'size-9 rounded-lg',
+  'icon-lg': 'size-12 rounded-xl',
 };
 
 export function MockButton({
