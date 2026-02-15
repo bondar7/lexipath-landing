@@ -86,7 +86,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         {phoneScreen && (
           <div className={`order-1 lg:order-2 flex justify-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
             }`}>
-            <PhoneFrame className="transform hover:scale-105 transition-transform duration-300">
+            <PhoneFrame className="transition-transform duration-300">
               {phoneScreen}
             </PhoneFrame>
           </div>

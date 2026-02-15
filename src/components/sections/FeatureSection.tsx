@@ -2,12 +2,16 @@ import { BookOpen, Sparkles, Target } from 'lucide-react';
 import React from 'react';
 import { i18n } from '../../config/i18n';
 import AddCustomListModal from '../screens/AddCustomListModal';
+import AddListGenerationMock from '../screens/AddListGenerationMock';
+import HomeMockScreen from '../screens/HomeMockScreen';
+import LibraryMockScreen from '../screens/LibraryMockScreen';
 import WordGroupSelectionScreen from '../screens/WordGroupSelectionScreen';
 import WordsMainScreen from '../screens/WordsMainScreen';
 import FeatureCard from '../ui/FeatureCard';
 
 const FeatureSection: React.FC = () => {
   const t = i18n.en.features;
+  const useAppMockScreens = true;
 
   return (
     <section className="py-12 md:py-18 bg-gray-50">
@@ -32,7 +36,7 @@ const FeatureSection: React.FC = () => {
               text: t.smartGroups.mainIdea,
               description: t.smartGroups.description
             }}
-            phoneScreen={<WordGroupSelectionScreen />}
+            phoneScreen={useAppMockScreens ? <AddListGenerationMock /> : <WordGroupSelectionScreen />}
           />
           
           <FeatureCard
@@ -41,7 +45,7 @@ const FeatureSection: React.FC = () => {
             title={t.smartLists.title}
             description={t.smartLists.description}
             features={t.smartLists.features}
-            phoneScreen={<WordsMainScreen />}
+            phoneScreen={useAppMockScreens ? <HomeMockScreen /> : <WordsMainScreen />}
           />
 
           <FeatureCard
@@ -50,7 +54,7 @@ const FeatureSection: React.FC = () => {
             title={t.aiLists.title}
             description={t.aiLists.description}
             features={t.aiLists.features}
-            phoneScreen={<AddCustomListModal />}
+            phoneScreen={useAppMockScreens ? <LibraryMockScreen /> : <AddCustomListModal />}
           />
         </div>
       </div>
@@ -59,4 +63,3 @@ const FeatureSection: React.FC = () => {
 };
 
 export default FeatureSection;
-

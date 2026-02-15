@@ -44,7 +44,7 @@ function App() {
       <Analytics />
       <Routes>
         <Route path="/" element={
-          <div className="min-h-screen bg-white">
+          <div className="bg-gray-50 overflow-x-hidden">
             <main>
               <HeroSection />
               <FeatureSection />
