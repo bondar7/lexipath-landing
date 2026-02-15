@@ -4,6 +4,7 @@ import { MockCard } from '../mock-ui/card';
 import { MockButton } from '../mock-ui/button';
 import { MockHeaderWrapper } from '../mock-ui/header-wrapper';
 import { MockBottomBar } from '../mock-ui/bottom-bar';
+import { MOCK_RECENT_LISTS } from './mock-lists';
 import { cn } from '../mock-ui/cn';
 
 const mockStats = {
@@ -17,12 +18,7 @@ const mockStats = {
     d.setDate(d.getDate() - (20 - i));
     return { date: d.toISOString().split('T')[0], count: i % 3 === 0 ? 12 : i % 2 === 0 ? 6 : 0 };
   }),
-  recent_lists: [
-    { id: '1', title: 'Práce - Úroveň B1', progress: 40 },
-    { id: '2', title: 'Sport', progress: 1 },
-    { id: '3', title: 'Běžná slovesa', progress: 22 },
-    { id: '4', title: 'Věda', progress: 10 },
-  ],
+  recent_lists: MOCK_RECENT_LISTS,
 };
 
 function TopStatsSheet({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {

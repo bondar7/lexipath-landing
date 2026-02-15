@@ -1,10 +1,10 @@
-import { BookOpen, Sparkles, Target } from 'lucide-react';
+import { CalendarCheck, Sparkles, Target } from 'lucide-react';
 import React from 'react';
 import { i18n } from '../../config/i18n';
 import AddCustomListModal from '../screens/AddCustomListModal';
 import AddListGenerationMock from '../screens/AddListGenerationMock';
 import HomeMockScreen from '../screens/HomeMockScreen';
-import LibraryMockScreen from '../screens/LibraryMockScreen';
+import LearningSessionConfigMock from '../screens/LearningSessionConfigMock';
 import WordGroupSelectionScreen from '../screens/WordGroupSelectionScreen';
 import WordsMainScreen from '../screens/WordsMainScreen';
 import FeatureCard from '../ui/FeatureCard';
@@ -36,16 +36,7 @@ const FeatureSection: React.FC = () => {
               text: t.smartGroups.mainIdea,
               description: t.smartGroups.description
             }}
-            phoneScreen={useAppMockScreens ? <AddListGenerationMock /> : <WordGroupSelectionScreen />}
-          />
-          
-          <FeatureCard
-            icon={BookOpen}
-            iconColor="blue"
-            title={t.smartLists.title}
-            description={t.smartLists.description}
-            features={t.smartLists.features}
-            phoneScreen={useAppMockScreens ? <HomeMockScreen /> : <WordsMainScreen />}
+            phoneScreen={useAppMockScreens ? <LearningSessionConfigMock /> : <WordGroupSelectionScreen />}
           />
 
           <FeatureCard
@@ -54,7 +45,16 @@ const FeatureSection: React.FC = () => {
             title={t.aiLists.title}
             description={t.aiLists.description}
             features={t.aiLists.features}
-            phoneScreen={useAppMockScreens ? <LibraryMockScreen /> : <AddCustomListModal />}
+            phoneScreen={useAppMockScreens ? <AddListGenerationMock /> : <AddCustomListModal />}
+          />
+          
+          <FeatureCard
+            icon={CalendarCheck}
+            iconColor="blue"
+            title={t.smartLists.title}
+            description={t.smartLists.description}
+            features={t.smartLists.features}
+            phoneScreen={useAppMockScreens ? <HomeMockScreen /> : <WordsMainScreen />}
           />
         </div>
       </div>

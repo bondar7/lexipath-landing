@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+
 /* Fix over-scroll white background issue */
 html, body {
   background-color: #f9fafb; /* gray-50 to match page background */
@@ -106,6 +108,31 @@ body {
 .phone-scroll::-webkit-scrollbar {
   width: 0;
   height: 0;
+}
+
+/* Subtle highlight underline for key phrase */
+.ink-underline {
+  position: relative;
+  color: #111111;
+  font-weight: 700;
+  font-family: 'Roboto Condensed', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  padding: 0 2px;
+  display: inline-block;
+  z-index: 0;
+}
+
+.ink-underline::after {
+  content: '';
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  height: 0.65em;
+  bottom: -0.08em;
+  background: rgba(99, 102, 241, 0.35);
+  border-radius: 8px 6px 10px 5px;
+  transform: skewX(-8deg) rotate(-1deg);
+  box-shadow: 0 2px 0 rgba(99, 102, 241, 0.22);
+  z-index: -1;
 }
 
  

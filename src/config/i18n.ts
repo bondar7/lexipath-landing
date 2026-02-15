@@ -29,36 +29,35 @@ export const i18n = {
       subtitle: "Explore revolutionary features that make learning words more effective and enjoyable.",
       
       smartLists: {
-        title: "Smart Word Lists",
-        description: "Master vocabulary with curated lists for every level and goal.",
+        title: "Your Daily Practice",
+        description: "Stay on track with daily goals, smart reviews, and progress you can see.",
         features: [
-          "Ready-made lists: IELTS, TOEFL, Business, Academic, A1, C2 and more",
-          "Create custom lists with AI or import files", 
-          "Track progress across all lists",
-          "Smart reviews adapt to your pace"
+          "Daily focus shows how close you are to your goal",
+          "Jump back into recent lists in one tap",
+          "Smart review queue adapts to your pace",
+          "Quick start learning from your home screen"
         ]
       },
       
       smartGroups: {
         title: "Smart Word Groups",
-        mainIdea: "🚀 THE MAIN IDEA!",
-        description: "The proven way to learn vocabulary faster. Pick groups of 5-12 words and master them with 7 exercises!",
+        mainIdea: "",
+        description: "Small, focused groups keep practice fast and effective — finish a set, feel the progress.",
         features: [
-          "Optimal group sizes (5-12 words)",
+          "Optimal group sizes (5-20 words)",
           "Practice with 7 different exercises",
-          "One-click regeneration",
           "Research-backed learning method"
         ]
       },
       
       aiLists: {
-        title: "AI-Powered Custom Lists", 
-        description: "Build perfect word lists instantly. Manual creation or AI generation from any topic.",
+        title: "Magic Custom Lists", 
+        description: "Get a complete list for any topic in seconds — with definitions, translations, example sentences, and audio included.",
         features: [
-          "Manual word list creation",
-          "AI generation from any topic",
-          "Difficulty levels A1-C2",
-          "Import from files"
+          "Get your list for any topic — interview prep, travel, dining, and more",
+          "Auto‑filled words, translations, sentences, and audio",
+          "Edit and expand lists easily whenever you want",
+          "Save time with smart autofill for every field"
         ]
       }
     },

@@ -42,7 +42,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         }`}
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
-        <div className={`order-2 lg:order-1 space-y-5 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+        <div className={`order-1 space-y-5 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
           }`}>
           <div className="flex items-center space-x-3">
             <div className={`bg-${iconColor}-100 p-3 rounded-xl transition-transform duration-300 hover:scale-110`}>
@@ -52,11 +52,39 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
           </div>
 
           {highlight && (
-            <div className={`bg-gradient-to-r from-${colors.secondary}-50 to-${colors.accent}-50 p-4 rounded-xl border border-${colors.secondary}-200 transform hover:scale-105 transition-transform duration-200`}>
-              <p className={`text-base md:text-lg font-semibold text-${colors.secondary}-900 mb-2`}>
-                {highlight.text}
+            <div className={`bg-gradient-to-r from-${colors.secondary}-50 to-${colors.accent}-50 p-4 rounded-xl border border-${colors.secondary}-200`}>
+              {highlight.text && (
+                <p className={`text-base md:text-lg font-semibold text-${colors.secondary}-900 mb-2`}>
+                  {highlight.text}
+                </p>
+              )}
+              <p className="text-lg md:text-xl text-gray-700">
+                {(() => {
+                  const emDashParts = highlight.description.split('—');
+                  if (emDashParts.length > 1) {
+                    return (
+                      <>
+                        {emDashParts[0].trim()} —{' '}
+                        <span className="ink-underline">
+                          {emDashParts.slice(1).join('—').trim()}
+                        </span>
+                      </>
+                    );
+                  }
+                  const dashParts = highlight.description.split('-');
+                  if (dashParts.length > 1) {
+                    return (
+                      <>
+                        {dashParts[0].trim()} —{' '}
+                        <span className="ink-underline">
+                          {dashParts.slice(1).join('-').trim()}
+                        </span>
+                      </>
+                    );
+                  }
+                  return highlight.description;
+                })()}
               </p>
-              <p className="text-lg md:text-xl text-gray-700">{highlight.description}</p>
             </div>
           )}
 
@@ -84,7 +112,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         </div>
 
         {phoneScreen && (
-          <div className={`order-1 lg:order-2 flex justify-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+          <div className={`order-2 flex justify-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
             }`}>
             <PhoneFrame className="transition-transform duration-300">
               {phoneScreen}
