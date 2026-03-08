@@ -3,7 +3,7 @@ export const i18n = {
     hero: {
       title: "Master Any Language",
       subtitle: "10x Faster",
-      description: "Revolutionary AI-powered vocabulary learning that adapts to your brain.",
+      description: "Build your own word library fast — learn the way that fits you best",
       exercises: "7 scientifically-proven exercises",
       exercisesSuffix: "in one seamless experience.",
       stats: {
@@ -25,7 +25,7 @@ export const i18n = {
     
     features: {
       title: "See the Future of Vocabulary Learning",
-      subtitle: "Explore features that make learning words more effective and enjoyable.",
+      subtitle: "7 scientifically-proven exercises in one seamless experience",
       
       smartLists: {
         title: "Your Daily Practice",

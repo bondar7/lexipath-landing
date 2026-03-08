@@ -31,10 +31,8 @@ const HeroSection: React.FC = () => {
           </h1>
           
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed font-medium">
             {t.description}
-            <br />
-            <span className={`text-${colors.primary}-300 font-semibold`}>{t.exercises}</span> {t.exercisesSuffix}
           </p>
           
           {/* Stats Row */}
