@@ -6,7 +6,7 @@ const StructuredData: React.FC = () => {
     "@type": "SoftwareApplication",
     "name": "Lexipath",
     "alternateName": "Lexipath: Your Path to Better Vocabulary",
-    "description": "Lexipath: your path to better vocabulary. Revolutionary AI-powered vocabulary learning app with 7 proven exercises and spaced repetition.",
+    "description": "Build your own word library fast — learn the way that fits you best",
     "slogan": "Your path to better vocabulary",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "Web, iOS, Android",
