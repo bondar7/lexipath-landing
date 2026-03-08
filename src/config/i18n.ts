@@ -1,7 +1,6 @@
 export const i18n = {
   en: {
     hero: {
-      badge: "Powered by Advanced AI",
       title: "Master Any Language",
       subtitle: "10x Faster",
       description: "Revolutionary AI-powered vocabulary learning that adapts to your brain.",
@@ -26,7 +25,7 @@ export const i18n = {
     
     features: {
       title: "See the Future of Vocabulary Learning",
-      subtitle: "Explore revolutionary features that make learning words more effective and enjoyable.",
+      subtitle: "Explore features that make learning words more effective and enjoyable.",
       
       smartLists: {
         title: "Your Daily Practice",
@@ -34,8 +33,7 @@ export const i18n = {
         features: [
           "Daily focus shows how close you are to your goal",
           "Jump back into recent lists in one tap",
-          "Smart review queue adapts to your pace",
-          "Quick start learning from your home screen"
+          "Smart review queue adapts to your pace"
         ]
       },
       

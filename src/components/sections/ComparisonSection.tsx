@@ -9,10 +9,6 @@ const ComparisonSection: React.FC = () => {
     <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <header className="text-center mb-12 md:mb-16">
-          <div className="inline-flex items-center bg-gradient-to-r from-blue-100 to-purple-100 px-4 py-2 rounded-full mb-4">
-            <Zap className="w-4 h-4 text-blue-600 mr-2" aria-hidden="true" />
-            <span className="text-sm font-medium text-blue-800">Revolutionary Approach</span>
-          </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             {t.title}
           </h2>
