@@ -5,7 +5,7 @@ const StatsSection: React.FC = () => {
     { number: '7', label: 'Exercise Types' },
     { number: '10', label: 'Languages' },
     { number: '10k+', label: 'Pre-made Word Lists' },
-    { number: '∞', label: 'AI-Generated Topics' }
+    { number: '∞', label: 'AI-Generated Lists' }
   ];
 
   return (

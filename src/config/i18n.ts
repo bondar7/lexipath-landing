@@ -104,25 +104,25 @@ export const i18n = {
     comparison: {
       title: "Why Our Method Works Better",
       subtitle:
-        "Traditional vocabulary apps are broken. Here's how we're different.",
+        "Any words. Real context exercises. Not a static course.",
       traditional: {
         title: "Traditional Apps",
         features: [
-          "Simple flashcards only",
-          "No context or examples",
-          "Random review timing",
-          "Limited topic coverage",
-          "Mostly only English",
+          "Static course path",
+          "Their words, not yours",
+          "Mostly flashcards",
+          "No dynamic exercises",
+          "Slow list creation",
         ],
       },
       lexipath: {
         title: "Lexipath",
         features: [
-          "7 different exercise types",
-          "AI-generated examples",
-          "Scientific spaced repetition",
-          "Unlimited AI topics",
-          "Multi-language support",
+          "Your words, not a fixed course",
+          "Generate any topic list in seconds",
+          "Practice words in real context",
+          "7 exercise types, not just flashcards",
+          "Spaced repetition built in",
         ],
       },
     },
