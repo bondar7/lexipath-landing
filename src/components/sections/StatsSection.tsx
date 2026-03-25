@@ -3,7 +3,7 @@ import React from 'react';
 const StatsSection: React.FC = () => {
   const stats = [
     { number: '7', label: 'Exercise Types' },
-    { number: 'Multi', label: 'Languages' },
+    { number: '10', label: 'Languages' },
     { number: '10k+', label: 'Pre-made Word Lists' },
     { number: '∞', label: 'AI-Generated Topics' }
   ];

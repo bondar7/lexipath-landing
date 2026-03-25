@@ -1,10 +1,11 @@
 import React from 'react';
-import { Zap, CheckCircle, TrendingUp, Clock, Globe } from 'lucide-react';
+import { CheckCircle, TrendingUp, Clock, Globe } from 'lucide-react';
 import { colors } from '../../config/colors';
 import { i18n } from '../../config/i18n';
 
 const HeroSection: React.FC = () => {
   const t = i18n.en.hero;
+  const titleParts = t.title.split('. ').filter(Boolean);
 
   return (
     <section className="relative overflow-hidden">
@@ -24,10 +25,23 @@ const HeroSection: React.FC = () => {
         <div className="text-center">
           {/* Main Heading */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            {t.title}
-            <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              {t.subtitle}
-            </span>
+            {titleParts.length === 2 ? (
+              <>
+                <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent sm:inline">
+                  {`${titleParts[0]}.`}
+                </span>
+                <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent sm:ml-4 sm:inline">
+                  {titleParts[1]}
+                </span>
+              </>
+            ) : (
+              t.title
+            )}
+            {t.subtitle ? (
+              <span className="block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                {t.subtitle}
+              </span>
+            ) : null}
           </h1>
           
           {/* Subheading */}
@@ -58,7 +72,6 @@ const HeroSection: React.FC = () => {
                 href="https://app.lexipath.xyz"
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-2xl font-bold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center space-x-2 text-base shadow-2xl"
               >
-                <Zap className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
                 <span>Open the App</span>
               </a>
             </div>
