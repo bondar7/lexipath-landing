@@ -104,15 +104,15 @@ export const i18n = {
     comparison: {
       title: "Why Our Method Works Better",
       subtitle:
-        "Any words. Real context exercises. Not a static course.",
+        "Any words. Real exercises. Not a static course.",
       traditional: {
-        title: "Traditional Apps",
+        title: "What usually happens?",
         features: [
           "Static course path",
           "Their words, not yours",
           "Mostly flashcards",
           "No dynamic exercises",
-          "Slow list creation",
+          "Manual list building",
         ],
       },
       lexipath: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, XCircle, Zap } from 'lucide-react';
+import { CheckCircle, XCircle } from 'lucide-react';
 import { i18n } from '../../config/i18n';
 
 const ComparisonSection: React.FC = () => {
@@ -18,7 +18,7 @@ const ComparisonSection: React.FC = () => {
         </header>
         
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto">
-          {/* Traditional Apps */}
+          {/* Fixed apps */}
           <article className="bg-white rounded-2xl p-6 md:p-8 shadow-lg border border-gray-200 relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-400 to-red-600" aria-hidden="true"></div>
             <header className="flex items-center mb-6">
@@ -46,15 +46,9 @@ const ComparisonSection: React.FC = () => {
               <div className="bg-green-100 p-3 rounded-full mr-4">
                 <CheckCircle className="w-6 h-6 text-green-600" aria-hidden="true" />
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-gray-900">
-                  {t.lexipath.title}
-                </h3>
-                <div className="inline-flex items-center bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full text-xs font-medium mt-2">
-                  <Zap className="w-3 h-3 mr-1" aria-hidden="true" />
-                  Better Results
-                </div>
-              </div>
+              <h3 className="text-xl font-bold text-gray-900">
+                {t.lexipath.title}
+              </h3>
             </header>
             <ul className="space-y-3">
               {t.lexipath.features.map((feature, index) => (
